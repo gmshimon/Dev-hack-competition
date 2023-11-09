@@ -8,19 +8,30 @@ import {
   ScrollView,
 } from "react-native";
 import { TextInput, Button, Icon, MD3Colors } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LoginPage() {
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
   const handleSignIn = () => {
     console.log("email: ", email);
     console.log("Password: ", pass);
+    navigation.navigate("StartPage");
   };
   return (
-    <ScrollView style={{ flex: 1, paddingTop: 60, backgroundColor: "white" }}>
+    <ScrollView style={{ flex: 1, paddingTop: 40, backgroundColor: "white" }}>
       <View>
-        <Image source={require("../../assets/lock-icon.png")} />
+        <Image
+          style={{
+            alignSelf: "center",
+            marginBottom: 10,
+            width: 80,
+            height: 80,
+          }}
+          source={require("../../assets/lock-icon.png")}
+        />
         <Text style={styles.SignIn}>Sign In</Text>
       </View>
       <View style={styles.textContainer}>
@@ -43,7 +54,12 @@ export default function LoginPage() {
         <Button
           mode="contained"
           onPress={() => handleSignIn()}
-          style={{ width: 310, alignItems: "center" }}
+          style={{
+            width: 310,
+            alignItems: "center",
+            backgroundColor: "#4285F4",
+          }}
+          labelStyle={{ fontSize: 18 }}
         >
           Sign in
         </Button>

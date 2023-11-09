@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 export default function StartPage() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
@@ -10,7 +12,7 @@ export default function StartPage() {
             uri: "https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/sqjix0bbx5-54719%3A24918?alt=media&token=7ee6d3e0-f472-435d-a37c-c8996f4c0087",
           }}
         />
-        <Text style={styles.logoText}>Lorem Ipsum</Text>
+        <Text style={styles.logoText}>Lorem Ipsu</Text>
       </View>
       <Text style={styles.welcomeText}>
         Welcome to your Community Application
