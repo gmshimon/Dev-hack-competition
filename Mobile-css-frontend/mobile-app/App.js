@@ -23,7 +23,11 @@ export default function App () {
             options={{ headerShown: false }}
             component={LoginPage}
           />
-          <Stack.Screen name='StartPage' component={StartPage} />
+          <Stack.Screen
+            name='StartPage'
+            options={{ headerShown: false }}
+            component={StartPage}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

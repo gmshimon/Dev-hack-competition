@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignItems: "center",
-    marginVertical: 16,
+    marginVertical: 10,
   },
   house: {
     width: 64,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     textAlign: "center",
     letterSpacing: 0.1,
-    marginBottom: 16,
+    marginBottom: 10,
   },
   button: {
     alignItems: "center",
