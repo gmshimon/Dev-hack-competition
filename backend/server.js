@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const express = require('express')
+require('dotenv').config()
 const cors = require('cors')
 var bodyParser = require('body-parser')
 
@@ -12,9 +13,11 @@ app.use(express.json())
 app.use(cors())
 
 //database connection
-mongoose.connect('mongodb://127.0.0.1:27017/Jom-tapau').then(() => {
+mongoose.connect('mongodb://127.0.0.1:27017/Dev-hack').then(() => {
   console.log('Database connected successfully')
 })
+
+const userRouter = require('./Models/User/user.route')
 
 app.get('/', (req, res) => {
   res.send('Welcome to Jom Tapau')
@@ -22,4 +25,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log('Listening on port', port)
+  app.use('/api/v1/user', userRouter)
 })
