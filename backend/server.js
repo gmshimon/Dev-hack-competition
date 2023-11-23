@@ -18,6 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/Dev-hack').then(() => {
 })
 
 const userRouter = require('./Models/User/user.route')
+const propertyRouter = require('./Models/Property/property.route')
 
 app.get('/', (req, res) => {
   res.send('Welcome to Jom Tapau')
@@ -26,4 +27,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log('Listening on port', port)
   app.use('/api/v1/user', userRouter)
+  app.use('/api/v1/property', propertyRouter)
 })

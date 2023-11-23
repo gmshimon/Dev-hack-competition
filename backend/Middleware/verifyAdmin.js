@@ -3,16 +3,26 @@ const { promisify } = require('util')
 
 module.exports = async (req, res, next) => {
   try {
-    const token = req.headers?.authorization?.split(' ')[1]
+    const token = req.headers?.authorization?.split('')[1]
 
     if (!token) {
       return res.status(401).json({
-        status: 'fail',
+        status: 'Fail',
         message: 'You are not login'
       })
     }
 
-    const decoded = await promisify(jwt.verify)(token, process.env.TOKEN_SECRET)
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.process.env.TOKEN_SECRET
+    )
+
+    if (!decoded.admin) {
+      return res.status(401).json({
+        status: 'fail',
+        message: 'you are not Admin'
+      })
+    }
     req.user = decoded
 
     next()
