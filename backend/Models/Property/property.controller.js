@@ -1,3 +1,4 @@
+const { generateRandomNumber } = require('../../utilis/generateRandrom')
 const Bills = require('../Bills/bills.modules')
 const User = require('../User/user.modules')
 const Property = require('./property.modules')
@@ -35,18 +36,7 @@ module.exports.addProperty = async (req, res, next) => {
 //get all bills of a property
 module.exports.getAllBills = async (req, res, next) => {
   try {
-    const { user } = req
-    const { propertyID } = req.params
-    const property = await Property.findOne({
-      _id: propertyID,
-      tenant: user?.id
-    })
-    if (!property) {
-      res.status(404).json({
-        status: 'Fail',
-        message: 'No property found'
-      })
-    }
+    const { property } = req
     const billOfProperty = await Bills.find({ property: property._id })
 
     res.status(200).json({
@@ -66,22 +56,67 @@ module.exports.getAllBills = async (req, res, next) => {
 // TODO: update the bill of a property
 module.exports.payAllBills = async (req, res, next) => {
   try {
-    const { user } = req
-    const { propertyID } = req.params
+    const { property } = req
+    const { billID } = req.params
+    const billProperty = await Bills.findOne({
+      _id: billID,
+      property: property._id
+    }).select('-__v -property') // fetch the bill information using bill id
 
-    const property = await Property.find({ _id: propertyID, tenant: user?.id })
-    if (!property) {
-      res.status(404).json({
+    // check if the bill exists
+    if (billProperty.length === 0) {
+      return res.status(404).json({
         status: 'Fail',
-        message: 'No property found'
+        message: 'NO Bill data found'
       })
     }
-    const billProperty = await Bills.find({})
+
+    //check if the bills have been paid
+    if (billProperty?.isAllPayment?.paid) {
+      return res.status(401).json({
+        status: 'OK',
+        message: 'Already paid'
+      })
+    }
+
+    const randomNumber = generateRandomNumber() // this random number will be used as transaction id
+
+    const updateData = {
+      water: {
+        amount: billProperty?.water?.amount,
+        payment: true
+      },
+      gas: {
+        amount: billProperty?.gas?.amount,
+        payment: true
+      },
+      power: {
+        amount: billProperty?.power?.amount,
+        payment: true
+      },
+      isAllPayment: {
+        paid: true,
+        totalAmount: billProperty?.isAllPayment?.totalAmount
+      },
+      transactionID: randomNumber
+    }
+    const updateBill = await Bills.updateOne(
+      { _id: billID },
+      {
+        $set: updateData
+      }
+    )
     res.status(200).json({
       status: 'Success',
       message: 'Property found',
-      data: property
+      data: updateBill
     })
-    console.log(propertyID)
-  } catch (error) {}
+
+    // console.log(propertyID)
+  } catch (error) {
+    res.status(400).json({
+      status: 'Fail',
+      message: error.message
+    })
+  }
 }
