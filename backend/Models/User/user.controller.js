@@ -3,6 +3,7 @@ const User = require('./user.modules')
 const bcrypt = require('bcrypt')
 const { ObjectId } = require('mongodb')
 const { generateToken } = require('../../utilis/token')
+const Property = require('../Property/property.modules')
 
 module.exports.postUser = async (req, res, next) => {
   try {
@@ -76,6 +77,28 @@ module.exports.getMe = async (req, res, next) => {
       status: 'Success',
       message: 'Verified',
       data: user
+    })
+  } catch (error) {
+    res.status(400).json({
+      status: 'Fail',
+      message: 'Failed to fetch data',
+      error: error.message
+    })
+  }
+}
+module.exports.getMyProperty = async (req, res, next) => {
+  try {
+    const { user } = req
+    const myProperty = await Property.find({ tenant: user.id })
+      .select('-tenant -__v')
+      .populate({
+        path: 'bills',
+        select: '-property -__v'
+      })
+    res.status(200).json({
+      status: 'Success',
+      message: 'Property successfully retrieved',
+      data: myProperty
     })
   } catch (error) {
     res.status(400).json({

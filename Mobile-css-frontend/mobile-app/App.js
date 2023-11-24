@@ -5,6 +5,7 @@ import { PaperProvider } from 'react-native-paper'
 import StartPage from './Pages/StartPage/StartPage'
 import LoginPage from './Pages/LoginPage/LoginPage'
 import SignUp from './Pages/Signup/SignUp'
+import MainContainer from './Pages/Dashboard/MainContainer'
 
 const Stack = createNativeStackNavigator()
 
@@ -13,6 +14,11 @@ export default function App () {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            name='Dashboard'
+            component={MainContainer}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name='Sign up'
             options={{ headerShown: false }}

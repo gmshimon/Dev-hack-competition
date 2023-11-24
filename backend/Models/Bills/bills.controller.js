@@ -3,6 +3,14 @@ const Bills = require('./bills.modules')
 
 module.exports.addBills = async (req, res, next) => {
   try {
+    const user = req.user
+    if (!user.admin) {
+      return res.status(401).json({
+        status: 'fail',
+        message: 'You are not Admin'
+      })
+    }
+
     const data = req.body
     const result = await Bills.create(data)
     const propertyID = data.property
