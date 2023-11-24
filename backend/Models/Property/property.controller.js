@@ -53,7 +53,6 @@ module.exports.getAllBills = async (req, res, next) => {
 }
 
 // Pay all the bills of a property
-// TODO: update the bill of a property
 module.exports.payAllBills = async (req, res, next) => {
   try {
     const { property } = req
