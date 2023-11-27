@@ -1,11 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Pressable, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import Dashboard from "./Dashboard";
-import Properties from "./Properties";
+import Properties from "../Properties/PropertiesScreen";
 import Settings from "./Settings";
 
 //Screen name
@@ -42,7 +42,17 @@ export default function MainContainer() {
         },
       })}
     >
-      <Tab.Screen name={DashboardName} component={Dashboard} />
+      <Tab.Screen
+        name={DashboardName}
+        component={Dashboard}
+        options={({ navigation }) => ({
+          headerLeft: () => (
+            <Pressable onPress={() => alert("Menu button pressed")}>
+              <Text style={{ color: "#fff", fontSize: 16 }}>Menu</Text>
+            </Pressable>
+          ),
+        })}
+      />
       <Tab.Screen name={PropertiesName} component={Properties} />
       <Tab.Screen name={settingsName} component={Settings} />
     </Tab.Navigator>

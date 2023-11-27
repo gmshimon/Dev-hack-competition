@@ -18,7 +18,12 @@ export default function StartPage() {
         Welcome to your Community Application
       </Text>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Get Started</Text>
+        <Text
+          style={styles.buttonText}
+          onPress={() => navigation.navigate("Dashboard")}
+        >
+          Get Started
+        </Text>
       </TouchableOpacity>
       <View style={{ flex: 1 }}>
         <Image

@@ -14,17 +14,17 @@ export default function App () {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          {/* <Stack.Screen
+            name='Sign up'
+            options={{ headerShown: false }}
+            component={SignUp}
+          /> */}
           <Stack.Screen
             name='Dashboard'
             component={MainContainer}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name='Sign up'
-            options={{ headerShown: false }}
-            component={SignUp}
-          />
-          <Stack.Screen
+          {/* <Stack.Screen
             name='Login'
             options={{ headerShown: false }}
             component={LoginPage}
@@ -33,7 +33,7 @@ export default function App () {
             name='StartPage'
             options={{ headerShown: false }}
             component={StartPage}
-          />
+          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
