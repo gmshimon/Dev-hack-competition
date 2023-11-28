@@ -1,14 +1,6 @@
 import React, { useState } from "react";
-import { Searchbar } from "react-native-paper";
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Searchbar, FAB } from "react-native-paper";
+import { StyleSheet, View, ScrollView } from "react-native";
 import SingleProperty from "../../Components/PropertiesComponent/SingleProperty";
 
 const subjects = [
@@ -21,31 +13,58 @@ const subjects = [
 export default function PropertiesScreen() {
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
+  const onFABPress = () => {
+    // Handle FAB press, e.g., navigate to another screen or perform an action
+    console.log("FAB Pressed!");
+  };
 
   return (
-    <ScrollView>
-      <View
-        style={{ paddingHorizontal: 10, paddingTop: 10, paddingBottom: 20 }}
-      >
+    <View style={styles.container}>
+      <View style={styles.searchBarContainer}>
         <Searchbar
           placeholder="Search for a property"
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
       </View>
-      <View
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          paddingHorizontal: 5,
-        }}
-      >
-        {subjects.map((subject, i) => {
-          return <SingleProperty key={subject.id} i={i} />;
-        })}
-      </View>
-    </ScrollView>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.contentContainer}>
+          {subjects.map((subject, i) => (
+            <SingleProperty key={subject.id} i={i} />
+          ))}
+        </View>
+      </ScrollView>
+      <FAB
+        style={styles.fab}
+        small
+        icon="plus"
+        onPress={() => alert("Button Clicked")}
+      />
+    </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  searchBarContainer: {
+    paddingHorizontal: 10,
+    paddingTop: 10,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  contentContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingHorizontal: 5,
+    paddingBottom: 40,
+  },
+  fab: {
+    position: "absolute",
+    margin: 16,
+    right: 0,
+    bottom: -10,
+  },
+});
