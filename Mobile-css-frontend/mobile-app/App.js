@@ -6,6 +6,7 @@ import StartPage from './Pages/StartPage/StartPage'
 import LoginPage from './Pages/LoginPage/LoginPage'
 import SignUp from './Pages/Signup/SignUp'
 import MainContainer from './Pages/Dashboard/MainContainer'
+import AddProperty from './Pages/AddProperty/AddProperty'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +24,13 @@ export default function App () {
             name='Dashboard'
             component={MainContainer}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='addProperty'
+            component={AddProperty}
+            options={{
+              headerTitleAlign: 'center'
+            }}
           />
           {/* <Stack.Screen
             name='Login'

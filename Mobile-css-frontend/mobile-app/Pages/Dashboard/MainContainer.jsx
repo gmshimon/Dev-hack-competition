@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Dashboard from "./Dashboard";
 import Properties from "../Properties/PropertiesScreen";
 import Settings from "./Settings";
+import { useEffect, useState } from "react";
 
 //Screen name
 const DashboardName = "Dashboard";
@@ -15,6 +16,10 @@ const settingsName = "Settings";
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
+  const [propertyTitle, setPropertyTitle] = useState(true);
+  useEffect(() => {
+    setPropertyTitle(true);
+  }, []);
   return (
     <Tab.Navigator
       initialRouteName={DashboardName}
@@ -53,7 +58,13 @@ export default function MainContainer() {
           ),
         })}
       />
-      <Tab.Screen name={PropertiesName} component={Properties} />
+      <Tab.Screen
+        name={PropertiesName}
+        component={Properties}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Tab.Screen name={settingsName} component={Settings} />
     </Tab.Navigator>
   );
