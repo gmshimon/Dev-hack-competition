@@ -28,7 +28,7 @@ export default function AllProperties() {
         />
       </View>
       <ScrollView style={styles.scrollView}>
-        <View style={styles.contentContainer}>
+        <View style={styles.contentContainer}> 
           {subjects.map((subject, i) => (
             <SingleProperty key={subject.id} i={i} />
           ))}
