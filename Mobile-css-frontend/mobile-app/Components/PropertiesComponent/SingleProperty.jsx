@@ -7,9 +7,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function SingleProperty({ i }) {
+  const navigation = useNavigation()
+
   return (
     <Card
       style={{
@@ -17,6 +20,7 @@ export default function SingleProperty({ i }) {
         marginTop: 16,
         marginLeft: i % 2 !== 0 ? 10 : 0,
       }}
+      onPress={()=>{navigation.navigate('singleHouse')}} 
     >
       <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
       <Card.Content>

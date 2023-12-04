@@ -11,15 +11,15 @@ export default function PropertiesScreen({ navigation }) {
   return (
     <>
       <Stack.Navigator>
+      <Stack.Screen
+          name="properties"
+          component={AllProperties}
+          options={{ title: "Property", headerTitleAlign: "center" }}                                                                                                                                                                                                                                                 
+        />
         <Stack.Screen
           name="singleHouse"
           component={SingleHouse}
           options={{ title: "House 136", headerTitleAlign: "center" }}
-        />
-        <Stack.Screen
-          name="properties"
-          component={AllProperties}
-          options={{ title: "Property", headerTitleAlign: "center" }}                                                                                                                                                                                                                                                 
         />
         <Stack.Screen
           name="addProperty"

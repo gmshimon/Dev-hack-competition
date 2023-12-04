@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Avatar, Button, Card, Text ,Icon} from 'react-native-paper'
+import React, { useLayoutEffect, useState } from 'react'
+import { Avatar, Button, Card, Text, Icon } from 'react-native-paper'
 import {
   StyleSheet,
   Image,
@@ -8,34 +8,47 @@ import {
   ScrollView
 } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import PaidModal from '../PaidModal/PaidModal'
 
-export default function SingleHouse () {
+export default function SingleHouse ({ navigation }) {
+
+  const [visible, setVisible] = React.useState(false)
+  const showModal = () => setVisible(true)
+  const hideModal = () => setVisible(false)
+
   const [waterPaid, setWaterPaid] = useState(false)
   const [gasPaid, setGasPaid] = useState(false)
   const [powerPaid, setPowerPaid] = useState(false)
-
   const billsData = [
     {
-        id:1,
-        icon:'https://i.ibb.co/fMcQNYz/Vector.png',
-        title:'Water',
-        bill:'150',
-        isPaid:waterPaid
-    },
-    {   id:2,
-        icon:'https://i.ibb.co/bbS8SpB/Fire-Icon.png',
-        title:'Gas',
-        bill:'299',
-        isPaid:gasPaid,
+      id: 1,
+      icon: 'https://i.ibb.co/fMcQNYz/Vector.png',
+      title: 'Water',
+      bill: '150',
+      isPaid: waterPaid
     },
     {
-        id:3,
-        icon:"https://i.ibb.co/c8Nv3y3/Power-Icon.png",
-        title:'Power',
-        bill:'128',
-        isPaid:powerPaid,
+      id: 2,
+      icon: 'https://i.ibb.co/bbS8SpB/Fire-Icon.png',
+      title: 'Gas',
+      bill: '299',
+      isPaid: gasPaid
+    },
+    {
+      id: 3,
+      icon: 'https://i.ibb.co/c8Nv3y3/Power-Icon.png',
+      title: 'Power',
+      bill: '128',
+      isPaid: powerPaid
     }
   ]
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'House'
+    })
+  }, [])
+
   return (
     <ScrollView>
       <Card
@@ -98,87 +111,93 @@ export default function SingleHouse () {
             </View>
           </View>
           {/* Payment Container */}
-          <View style={{marginTop:20}}>
-            {
-                billsData.map(obj=><View key={obj.id} style={{
-                    flexDirection:'row',
-                    justifyContent:'space-between',
-                    alignItems:'center',
-                    marginBottom:20
-                }}>
+          <View style={{ marginTop: 20 }}>
+            {billsData.map(obj => (
+              <View
+                key={obj.id}
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 20
+                }}
+              >
+                {/* right side details */}
+                <View
+                  style={{
+                    flexDirection: 'row'
+                  }}
+                >
                   <View
                     style={{
-                      flexDirection: 'row'
+                      borderRightWidth: 2,
+                      width: 60
                     }}
                   >
-                    <View
-                      style={{
-                        borderRightWidth: 2,
-                        width: 60
-                      }}
-                    >
-                      <Image
-                        style={{ width: 50, height: 50, resizeMode: 'contain' }}
-                        source={{ uri: obj.icon }}
-                      />
-                      <Text style={{ marginLeft: 5 }}>{obj.title}</Text>
-                    </View>
-                    <View
-                      style={{
-                        marginLeft: 20
-                      }}
-                    >
-                      <Text style={{ color: 'blue', marginBottom: 10 }}>
-                        MYR {obj.bill}
-                      </Text>
-                      <Text>Due in 3 days</Text>
-                    </View>
+                    <Image
+                      style={{ width: 50, height: 50, resizeMode: 'contain' }}
+                      source={{ uri: obj.icon }}
+                    />
+                    <Text style={{ marginLeft: 5 }}>{obj.title}</Text>
                   </View>
-                  <View>
-                    {
-                        !obj.isPaid?<Button
-                        icon='google'
-                        mode='contained-tonal'
+                  <View
+                    style={{
+                      marginLeft: 20
+                    }}
+                  >
+                    <Text style={{ color: 'blue', marginBottom: 10 }}>
+                      MYR {obj.bill}
+                    </Text>
+                    <Text>Due in 3 days</Text>
+                  </View>
+                </View>
+
+                {/* paid button  */}
+                <View>
+                  {!obj.isPaid ? (
+                    <Button
+                      icon='google'
+                      mode='contained-tonal'
+                      style={{
+                        backgroundColor: 'white',
+                        shadowColor: 'black',
+                        shadowOffset: {
+                          width: 0,
+                          height: 2
+                        },
+                        shadowOpacity: 0.3,
+                        elevation: 5
+                      }}
+                      onPress={() => {
+                        showModal()
+                        if (obj.id == 1) setWaterPaid(true)
+                        else if (obj.id == 2) setGasPaid(true)
+                        else if (obj.id == 3) setPowerPaid(true)
+                      }}
+                    >
+                      Pay
+                    </Button>
+                  ) : (
+                    <View
+                      style={{ flexDirection: 'row', alignItems: 'center' }}
+                    >
+                      <Icon source='check' color='green' size={25} />
+                      <Text
                         style={{
-                            backgroundColor:'white',
-                            shadowColor:'black',
-                            shadowOffset:{
-                                width:0,
-                                height:2
-                            },
-                            shadowOpacity:0.3,
-                            elevation:5,
-                        }}
-                        onPress={() => {
-                            if(obj.id==1)
-                                setWaterPaid(true)
-                            else if(obj.id==2)
-                                setGasPaid(true)
-                            else if(obj.id==3)
-                                setPowerPaid(true)
+                          fontSize: 20
                         }}
                       >
-                        Pay
-                      </Button>:
-                      <View 
-                        style={{flexDirection:'row',alignItems:'center'}}
-                      >
-                        <Icon 
-                            source="check"
-                            color='green'
-                            size={25}
-                        />
-                        <Text style={{
-                            fontSize:20
-                        }}>Paid</Text>
-                      </View>
-                    }
-                  </View>
-                </View>)
-            }
+                        Paid
+                      </Text>
+                    </View>
+                  )}
+                </View>
+              </View>
+            ))}
           </View>
         </Card.Content>
       </Card>
+      <PaidModal visible={visible} hideModal={hideModal}/>
     </ScrollView>
   )
 }
