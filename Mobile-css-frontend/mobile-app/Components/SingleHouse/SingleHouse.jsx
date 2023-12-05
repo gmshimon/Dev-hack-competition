@@ -10,7 +10,7 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import PaidModal from '../PaidModal/PaidModal'
 
-export default function SingleHouse ({ navigation }) {
+export default function SingleHouse ({ index,navigation }) {
 
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
@@ -45,7 +45,7 @@ export default function SingleHouse ({ navigation }) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'House'
+      title: `House ${index}`
     })
   }, [])
 

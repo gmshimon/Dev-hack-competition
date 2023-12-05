@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView
 } from "react-native";
 import { TextInput, Button, Icon, MD3Colors } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -21,7 +22,7 @@ export default function LoginPage() {
     navigation.navigate("StartPage");
   };
   return (
-    <ScrollView style={{ flex: 1, paddingTop: 40, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1, paddingTop: 40, backgroundColor: "white" }}>
       <View>
         <Image
           style={{
@@ -70,7 +71,7 @@ export default function LoginPage() {
         </TouchableOpacity>
         <Text style={styles.signUpText}>Don't have an account?Sign up</Text>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }
 
