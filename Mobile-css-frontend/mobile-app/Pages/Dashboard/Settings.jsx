@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { TextInput, Button, Checkbox } from "react-native-paper";
+import MapView from 'react-native-maps';
+import { StyleSheet, View } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 
 export default function Settings() {
-  return (
-    <View>
-      <Text>Settings</Text>
-    </View>
+ 
+    return (
+      <View style={styles.container}>
+        <MapView style={styles.map} />
+      </View>
+    
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+});
