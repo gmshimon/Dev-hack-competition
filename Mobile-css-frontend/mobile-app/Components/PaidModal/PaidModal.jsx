@@ -32,7 +32,7 @@ export default function PaidModal ({ visible, hideModal }) {
           <View>
             <View
               style={{
-                backgroundColor: 'green',
+                backgroundColor: '#34A853',
                 width: 50,
                 height: 50,
                 borderRadius: 25,

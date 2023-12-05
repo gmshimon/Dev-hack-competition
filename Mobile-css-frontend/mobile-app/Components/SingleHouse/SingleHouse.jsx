@@ -57,30 +57,7 @@ export default function SingleHouse ({ index, navigation }) {
     }
   ]
 
-  const billsData = [
-    {
-      id: 1,
-      icon: 'https://i.ibb.co/fMcQNYz/Vector.png',
-      title: 'Water',
-      bill: '150',
-      isPaid: waterPaid
-    },
-    {
-      id: 2,
-      icon: 'https://i.ibb.co/bbS8SpB/Fire-Icon.png',
-      title: 'Gas',
-      bill: '299',
-      isPaid: gasPaid
-    },
-    {
-      id: 3,
-      icon: 'https://i.ibb.co/c8Nv3y3/Power-Icon.png',
-      title: 'Power',
-      bill: '128',
-      isPaid: powerPaid
-    }
-  ]
-
+  // change the title of the page
   useLayoutEffect(() => {
     navigation.setOptions({
       title: `House 136`
@@ -170,35 +147,40 @@ export default function SingleHouse ({ index, navigation }) {
             <View>
               {bills.map((bill, index) => (
                 <Card style={styles.billCards}>
-                  <View style={{ flexDirection: 'row',justifyContent:'space-between',alignItems:'center' }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}
+                  >
                     {/* <View style={styles.flexRowWrap}> */}
-                      <View style={styles.billLeftSection}>
-                        <Image
-                          style={styles.billIcons}
-                          source={{ uri: bill.img }}
-                        />
-                        <Text variant='labelMedium' style={styles.billTitles}>
-                          {bill.title}
-                        </Text>
-                      </View>
-                      <View style={styles.billMiddleSection} flex={1}>
-                        <Text variant='bodyMedium' style={{ color: '#0647B3' }}>
-                          MYR {bill.amount}
-                        </Text>
-                        <Text variant='bodySmall'>
-                          Due in {bill.dueDate} days
-                        </Text>
-                      </View>
+                    <View style={styles.billLeftSection}>
+                      <Image
+                        style={styles.billIcons}
+                        source={{ uri: bill.img }}
+                      />
+                      <Text variant='labelMedium' style={styles.billTitles}>
+                        {bill.title}
+                      </Text>
+                    </View>
+                    <View style={styles.billMiddleSection} flex={1}>
+                      <Text variant='bodyMedium' style={{ color: '#0647B3' }}>
+                        MYR {bill.amount}
+                      </Text>
+                      <Text variant='bodySmall'>
+                        Due in {bill.dueDate} days
+                      </Text>
+                    </View>
                     {/* </View> */}
                     <View>
                       {!bill.isPaid ? (
                         <Button
                           icon='google'
-                          size={30}
-                          mode="elevated"
-                          labelStyle={{ fontSize: 20,color:'black' }}
+                          mode='elevated'
+                          labelStyle={{ fontSize: 20, color: 'black' }}
                           style={{
-                            marginRight:5,
+                            marginRight: 5,
                             backgroundColor: '#ffff',
                             shadowColor: 'black',
                             shadowOffset: {
@@ -219,13 +201,27 @@ export default function SingleHouse ({ index, navigation }) {
                         </Button>
                       ) : (
                         <View
-                          style={{ flexDirection: 'row', alignItems: 'center',paddingRight:20 }}
+                          style={{
+                            flexDirection: 'row',
+                            alignContent: 'center',
+                            paddingRight: 20
+                          }}
                         >
-                          <Icon source='check' color='green' size={25} />
+                          <View
+                            style={{
+                              backgroundColor: '#34A853',
+                              width: 30,
+                              height: 30,
+                              borderRadius: 15,
+                              marginBottom: 20
+                            }}
+                          >
+                            <Icon source='check' color='white' size={30} />
+                          </View>
                           <Text
                             style={{
                               fontSize: 20,
-                               marginLeft:5
+                              marginLeft: 5
                             }}
                           >
                             Paid
@@ -240,7 +236,7 @@ export default function SingleHouse ({ index, navigation }) {
           </Card.Content>
         </Card>
       </ScrollView>
-      <PaidModal visible={visible} hideModal={hideModal}/>
+      <PaidModal visible={visible} hideModal={hideModal} />
     </SafeAreaView>
   )
 }
