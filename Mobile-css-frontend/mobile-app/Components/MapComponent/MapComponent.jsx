@@ -1,38 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import MapView, { Marker } from 'react-native-maps'
-import { StyleSheet, TouchableOpacity, View, Text, Button } from 'react-native'
-import * as Location from 'expo-location'
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-export default function Settings () {
-  const [errorMsg, setErrorMsg] = useState('')
+export default function MapComponent () {
   const [mapRegion, setMapRegion] = useState({
     latitude: 37.78826,
     longitude: -122.4324,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421
   })
-
-  const userLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync()
-    if (status !== 'granted') {
-      setErrorMsg('Permission to access location was denied')
-    }
-    let location = await Location.getCurrentPositionAsync({
-      enableHighAccuracy: true
-    })
-    setMapRegion({
-      latitude: location?.coords?.latitude,
-      longitude: location?.coords?.longitude,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
-    })
-  }
-  userLocation()
-  useEffect(() => {
-    userLocation()
-  }, [])
-
   const handleZoomIn = () => {
     setMapRegion(prevRegion => ({
       ...prevRegion,
@@ -53,7 +30,7 @@ export default function Settings () {
       <MapView style={styles.map} region={mapRegion}>
         <Marker
           draggable
-          onDrag={e => console.log(e.nativeEvent.coordinate)}
+          onDragEnd={e => console.log(e.nativeEvent.coordinate)}
           coordinate={mapRegion}
           title='marker'
         />
@@ -62,11 +39,12 @@ export default function Settings () {
         <TouchableOpacity onPress={handleZoomIn}>
           <Text style={{ fontSize: 20 }}>+</Text>
         </TouchableOpacity>
+      </View>
+      <View style={{ position: 'absolute', top: 16, right: 16 }}>
         <TouchableOpacity onPress={handleZoomOut}>
           <Text style={{ fontSize: 20 }}>-</Text>
         </TouchableOpacity>
       </View>
-      <Button title='Get Location' onPress={userLocation} />
     </View>
   )
 }

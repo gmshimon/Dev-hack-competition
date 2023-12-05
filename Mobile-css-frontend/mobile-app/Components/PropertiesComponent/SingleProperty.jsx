@@ -16,14 +16,14 @@ export default function SingleProperty({ i }) {
   return (
     <Card
       style={{
-        width: 195,
+        width: 185,
         marginTop: 16,
         marginLeft: i % 2 !== 0 ? 10 : 0,
         backgroundColor:'white'
       }}
       onPress={()=>{navigation.navigate('singleHouse')}} 
     >
-      <Card.Cover style={{width:195}} source={{ uri: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/80813528.jpg?k=805ca38b6b7e46a0dec0d86597677378516a2e3239b9f17bc4f62b65e426e85e&o=&hp=1" }} />
+      <Card.Cover style={{width:185}} source={{ uri: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/80813528.jpg?k=805ca38b6b7e46a0dec0d86597677378516a2e3239b9f17bc4f62b65e426e85e&o=&hp=1" }} />
       <Card.Content>
         <View style={{ marginTop: 5 }}>
           <Text variant="titleLarge">House 136</Text>

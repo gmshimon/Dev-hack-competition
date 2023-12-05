@@ -14,7 +14,11 @@ export default function PropertiesScreen({ navigation }) {
       <Stack.Screen
           name="properties"
           component={AllProperties}
-          options={{ title: "Property", headerTitleAlign: "center" }}                                                                                                                                                                                                                                                 
+          options={{ title: "Property", headerTitleAlign: "center" ,   
+          headerStyle: {
+            height: 20, // Adjust the height as needed
+          },
+      }}                                                                                                                                                                                                                                                 
         />
         <Stack.Screen
           name="singleHouse"
