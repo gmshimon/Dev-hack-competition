@@ -45,7 +45,7 @@ export default function SingleHouse ({ index,navigation }) {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: `House ${index}`
+      title: `House 136`
     })
   }, [])
 

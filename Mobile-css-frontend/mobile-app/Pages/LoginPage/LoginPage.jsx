@@ -6,7 +6,8 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView
+  SafeAreaView,
+  Platform
 } from "react-native";
 import { TextInput, Button, Icon, MD3Colors } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -22,7 +23,7 @@ export default function LoginPage() {
     navigation.navigate("StartPage");
   };
   return (
-    <SafeAreaView style={{ flex: 1, paddingTop: 40, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" ,paddingTop:Platform.OS=="android"?60:0}}>
       <View>
         <Image
           style={{
