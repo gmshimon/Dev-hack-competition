@@ -19,10 +19,11 @@ export default function SingleProperty({ i }) {
         width: 195,
         marginTop: 16,
         marginLeft: i % 2 !== 0 ? 10 : 0,
+        backgroundColor:'white'
       }}
       onPress={()=>{navigation.navigate('singleHouse')}} 
     >
-      <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
+      <Card.Cover style={{width:195}} source={{ uri: "https://picsum.photos/700" }} />
       <Card.Content>
         <View style={{ marginTop: 5 }}>
           <Text variant="titleLarge">House 136</Text>

@@ -15,10 +15,10 @@ export default function App () {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
             name='Login'
             options={{ headerShown: false }}
-            component={LoginPage}/>
+            component={LoginPage}/> */}
           {/* <Stack.Screen
             name='Sign up'
             options={{ headerShown: false }}

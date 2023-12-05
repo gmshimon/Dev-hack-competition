@@ -22,6 +22,7 @@ export default function AllProperties() {
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
         <Searchbar
+        style={{backgroundColor: "white"}}
           placeholder="Search for a property"
           onChangeText={onChangeSearch}
           value={searchQuery}
@@ -68,5 +69,6 @@ const styles = StyleSheet.create({
     margin: 16,
     right: 0,
     bottom: -10,
+    backgroundColor:'white'
   },
 });
