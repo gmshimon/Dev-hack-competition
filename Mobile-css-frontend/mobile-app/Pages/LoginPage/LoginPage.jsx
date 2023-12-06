@@ -6,9 +6,10 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
-  Platform
+  Platform,
+  StatusBar
 } from "react-native";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { TextInput, Button, Icon, MD3Colors } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 
@@ -23,7 +24,8 @@ export default function LoginPage() {
     navigation.navigate("StartPage");
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" ,paddingTop:Platform.OS=="android"?60:0}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" ,paddingTop:Platform.OS=="android"?50:0}}>
+      <StatusBar/>
       <View>
         <Image
           style={{

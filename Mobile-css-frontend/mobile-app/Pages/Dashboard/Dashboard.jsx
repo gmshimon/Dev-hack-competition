@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  StatusBar,
 } from "react-native";
 import {
   TextInput,
@@ -24,6 +25,7 @@ export default function Dashboard() {
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "grey" }}>
+      <StatusBar/>
       <CustomerRent />
       <CustomerExpenses />
     </ScrollView>

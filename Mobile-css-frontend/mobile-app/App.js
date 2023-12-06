@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { PaperProvider } from 'react-native-paper'
@@ -8,6 +8,7 @@ import SignUp from './Pages/Signup/SignUp'
 import MainContainer from './Pages/Dashboard/MainContainer'
 import AddProperty from './Pages/AddProperty/AddProperty'
 
+
 const Stack = createNativeStackNavigator()
 
 export default function App () {
@@ -15,10 +16,13 @@ export default function App () {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
             name='Login'
-            options={{ headerShown: false }}
-            component={LoginPage}/> */}
+            options={{ headerTitleAlign: "center" ,headerStyle: {
+              height: 20, // Adjust the height as needed
+            } 
+          }}
+            component={LoginPage}/>
           {/* <Stack.Screen
             name='Sign up'
             options={{ headerShown: false }}
