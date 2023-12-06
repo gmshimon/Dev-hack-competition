@@ -4,7 +4,7 @@ import { StyleSheet, View, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import SingleProperty from '../../Components/SingleProperty/SingleProperty'
 
-export default function AllProperties() {
+export default function UtilityAllProperties() {
   const navigation = useNavigation()
   const [searchQuery, setSearchQuery] = useState('')
   const onChangeSearch = (query) => setSearchQuery(query)

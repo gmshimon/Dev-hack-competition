@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-export default function SingleHouse({ index, navigation }) {
+export default function UtilitySingleHouse({ index, navigation }) {
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
   const hideModal = () => setVisible(false)
@@ -171,11 +171,13 @@ export default function SingleHouse({ index, navigation }) {
                       </Text>
                     </View>
 
-                    <View>
-                      {!bill.isDisconnected ? (
+                    {!bill.isDisconnected ? (
+                      <View style={styles.disconnectButton}>
                         <Button
                           icon="close"
-                          mode="elevated"
+                          buttonColor="#EA4335"
+                          textColor="#fff"
+                          mode="text"
                           onPress={() => {
                             showModal()
                             if (bill.id == 1) setWaterDisconnected(true)
@@ -185,12 +187,14 @@ export default function SingleHouse({ index, navigation }) {
                         >
                           Disconnect
                         </Button>
-                      ) : (
-                        <View>
-                          <Text>Disconnected</Text>
-                        </View>
-                      )}
-                    </View>
+                      </View>
+                    ) : (
+                      <View style={styles.disconnected}>
+                        <Button mode="text" icon="close" textColor="#EA4335">
+                          Disconnected
+                        </Button>
+                      </View>
+                    )}
                   </View>
                 </Card>
               ))}
@@ -300,5 +304,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+  },
+  disconnectButton: {
+    paddingRight: 16,
+  },
+  disconnected: {
+    paddingRight: 8,
   },
 })

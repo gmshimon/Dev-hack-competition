@@ -17,13 +17,13 @@ import {
   MD3Colors,
 } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
-import CustomerRent from '../../../Components/UtilityProviderComponents/CustomerRent/CustomerRent'
+import UtilityCustomerRent from '../../../Components/UtilityProviderComponents/UtilityCustomerRent/UtilityCustomerRent'
 export default function Map() {
   const navigation = useNavigation()
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
-      <CustomerRent />
+      <UtilityCustomerRent />
     </ScrollView>
   )
 }

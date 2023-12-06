@@ -17,7 +17,7 @@ import {
   MD3Colors,
 } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
-export default function CustomerRent() {
+export default function UtilityCustomerRent() {
   const navigation = useNavigation()
   return (
     <View style={styles.box}>

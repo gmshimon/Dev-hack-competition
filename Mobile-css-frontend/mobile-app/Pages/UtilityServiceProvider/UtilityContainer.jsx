@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Map from './Map/Map'
-import PropertiesScreen from './Properties/PropertiesScreen'
+import UtilityPropertiesScreen from './UtilityProperties/UtilityPropertiesScreen'
 import Settings from '../Dashboard/Settings'
 import { useEffect, useState } from 'react'
 
@@ -60,7 +60,7 @@ export default function UtilityContainer() {
       />
       <Tab.Screen
         name={PropertiesName}
-        component={PropertiesScreen}
+        component={UtilityPropertiesScreen}
         options={{
           headerShown: false,
         }}

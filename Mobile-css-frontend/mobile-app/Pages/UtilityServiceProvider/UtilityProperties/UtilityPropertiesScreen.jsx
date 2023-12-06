@@ -3,11 +3,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import AddProperty from '../../AddProperty/AddProperty'
 import AllProperties from '../../Properties/AllProperties'
 import { Text } from 'react-native'
-import SingleHouse from '../../../Components/UtilityProviderComponents/SingleHouse/SingleHouse'
+import UtilitySingleHouse from '../../../Components/UtilityProviderComponents/UtilitySingleHouse/UtilitySingleHouse'
 
 const Stack = createNativeStackNavigator()
 
-export default function PropertiesScreen({ navigation }) {
+export default function UtilityPropertiesScreen({ navigation }) {
   return (
     <>
       <Stack.Navigator>
@@ -21,7 +21,7 @@ export default function PropertiesScreen({ navigation }) {
         />
         <Stack.Screen
           name="singleHouse"
-          component={SingleHouse}
+          component={UtilitySingleHouse}
           options={{ title: 'House 136', headerTitleAlign: 'center' }}
         />
         <Stack.Screen
