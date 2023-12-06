@@ -18,13 +18,17 @@ import {
 } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import CustomerRent from '../../../Components/UtilityProviderComponents/CustomerRent/CustomerRent'
+import MapComponent from '../../../Components/MapComponent/MapComponent'
 export default function Map() {
   const navigation = useNavigation()
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
+    <View style={{ flex: 1, backgroundColor: 'grey' }}>
       <CustomerRent />
-    </ScrollView>
+      {/* <View style={{flex:1}}> */}
+        <MapComponent/>
+      {/* </View> */}
+    </View>
   )
 }
 

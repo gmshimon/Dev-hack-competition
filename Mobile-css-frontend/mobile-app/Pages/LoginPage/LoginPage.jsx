@@ -21,7 +21,15 @@ export default function LoginPage() {
   const handleSignIn = () => {
     console.log("email: ", email);
     console.log("Password: ", pass);
-    navigation.navigate("StartPage");
+
+    if(email==="simon@gmail.com" && pass==="simon"){
+      navigation.navigate("utility-provider");
+    }
+    else{
+      navigation.navigate("Dashboard");
+
+    }
+
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" ,paddingTop:Platform.OS=="android"?50:0}}>

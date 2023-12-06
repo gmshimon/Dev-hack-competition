@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, } from 'react-native'
+import { StyleSheet, Text, View, } from 'react-native'
 import MapComponent from '../../Components/MapComponent/MapComponent'
 
 export default function Settings () {
