@@ -7,6 +7,7 @@ import LoginPage from './Pages/LoginPage/LoginPage'
 import SignUp from './Pages/Signup/SignUp'
 import MainContainer from './Pages/Dashboard/MainContainer'
 import AddProperty from './Pages/AddProperty/AddProperty'
+import UtilityContainer from './Pages/UtilityServiceProvider/UtilityContainer'
 
 
 const Stack = createNativeStackNavigator()
@@ -16,6 +17,11 @@ export default function App () {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
+        <Stack.Screen
+            name="utility-provider"
+            component={UtilityContainer}
+            options={{headerShown: false}}
+          />
         <Stack.Screen
             name='Login'
             options={{ headerTitleAlign: "center" ,headerStyle: {
@@ -33,6 +39,11 @@ export default function App () {
             component={MainContainer}
             options={{ headerShown: false }}
           />
+          {/* <Stack.Screen
+            name="utility-provider"
+            component={UtilityContainer}
+            options={{headerShown: false}}
+          /> */}
           <Stack.Screen
             name='addProperty'
             component={AddProperty}

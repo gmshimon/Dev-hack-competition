@@ -130,6 +130,7 @@ export default function MapComponent () {
             <Marker
               draggable
               key={index}
+              onPress={e=>console.log(marker?.title)}
               coordinate={marker.coordinate}
               title={marker.title}
             />
