@@ -16,15 +16,15 @@ import {
   ProgressBar,
   MD3Colors,
 } from 'react-native-paper'
-import { useNavigation } from '@react-navigation/native'
 import UtilityCustomerRent from '../../../Components/UtilityProviderComponents/UtilityCustomerRent/UtilityCustomerRent'
-export default function Map() {
-  const navigation = useNavigation()
 
+export default function MapDashboard() {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
-      <UtilityCustomerRent />
-    </ScrollView>
+    <>
+      <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
+        <UtilityCustomerRent />
+      </ScrollView>
+    </>
   )
 }
 

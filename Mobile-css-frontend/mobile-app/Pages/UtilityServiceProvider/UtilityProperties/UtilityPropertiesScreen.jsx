@@ -1,7 +1,7 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import AddProperty from '../../AddProperty/AddProperty'
-import AllProperties from '../../Properties/AllProperties'
+import UtilityAllProperties from './UtilityAllProperties'
 import { Text } from 'react-native'
 import UtilitySingleHouse from '../../../Components/UtilityProviderComponents/UtilitySingleHouse/UtilitySingleHouse'
 
@@ -12,15 +12,15 @@ export default function UtilityPropertiesScreen({ navigation }) {
     <>
       <Stack.Navigator>
         <Stack.Screen
-          name="properties"
-          component={AllProperties}
+          name="utilityProperties"
+          component={UtilityAllProperties}
           options={{
             title: 'Bookmarked Properties',
             headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen
-          name="singleHouse"
+          name="utilitySingleHouse"
           component={UtilitySingleHouse}
           options={{ title: 'House 136', headerTitleAlign: 'center' }}
         />

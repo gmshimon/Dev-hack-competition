@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Searchbar, FAB } from 'react-native-paper'
 import { StyleSheet, View, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import SingleProperty from '../../Components/SingleProperty/SingleProperty'
+import UtilitySingleProperty from '../../../Components/UtilityProviderComponents/PropertiesComponent/UtilitySingleProperty'
 
 export default function UtilityAllProperties() {
   const navigation = useNavigation()
@@ -31,7 +31,7 @@ export default function UtilityAllProperties() {
       <ScrollView style={styles.scrollView}>
         <View style={styles.contentContainer}>
           {subjects.map((subject, i) => (
-            <SingleProperty key={subject.id} i={i} />
+            <UtilitySingleProperty key={subject.id} i={i} />
           ))}
         </View>
       </ScrollView>
