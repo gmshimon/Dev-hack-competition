@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Map from './Map/Map'
+import Map from './MapDashboard/MapDashboard'
 import UtilityPropertiesScreen from './UtilityProperties/UtilityPropertiesScreen'
 import Settings from '../Dashboard/Settings'
 import { useEffect, useState } from 'react'

@@ -5,6 +5,7 @@ import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
 
 export default function MapComponent () {
+  const navigation = useNavigation()
   const markers = [
     {
       id: 1,
@@ -130,7 +131,9 @@ export default function MapComponent () {
             <Marker
               draggable
               key={index}
-              onPress={e=>console.log(marker?.title)}
+              onPress={e=>{
+                navigation.navigate("singleHouse")
+              }}
               coordinate={marker.coordinate}
               title={marker.title}
             />

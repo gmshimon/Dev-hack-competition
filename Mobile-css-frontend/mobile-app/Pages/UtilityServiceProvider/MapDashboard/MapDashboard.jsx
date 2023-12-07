@@ -5,7 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
+  ScrollView
 } from 'react-native'
 import {
   TextInput,
@@ -14,17 +14,19 @@ import {
   Divider,
   Provider,
   ProgressBar,
-  MD3Colors,
+  MD3Colors
 } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import UtilityCustomerRent from '../../../Components/UtilityProviderComponents/UtilityCustomerRent/UtilityCustomerRent'
-export default function Map() {
+import MapComponent from '../../../Components/MapComponent/MapComponent'
+export default function Map () {
   const navigation = useNavigation()
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
-      <UtilityCustomerRent />
-    </ScrollView>
+    <View style={{ flex: 1, backgroundColor: 'grey' }}>
+        <UtilityCustomerRent />
+        <MapComponent />
+    </View>
   )
 }
 
@@ -34,6 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginHorizontal: 8,
     borderRadius: 5,
-    paddingVertical: 20,
-  },
+    paddingVertical: 20
+  }
 })
