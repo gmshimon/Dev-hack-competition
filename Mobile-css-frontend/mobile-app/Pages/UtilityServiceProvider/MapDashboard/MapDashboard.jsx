@@ -19,12 +19,11 @@ import {
 import UtilityCustomerRent from '../../../Components/UtilityProviderComponents/UtilityCustomerRent/UtilityCustomerRent'
 
 export default function MapDashboard() {
+  const navigation = useNavigation()
   return (
-    <>
-      <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
-        <UtilityCustomerRent />
-      </ScrollView>
-    </>
+    <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
+      <UtilityCustomerRent />
+    </ScrollView>
   )
 }
 

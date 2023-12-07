@@ -6,7 +6,6 @@ import { useNavigation } from '@react-navigation/native'
 
 export default function MapComponent() {
   const navigation = useNavigation()
-
   const markers = [
     {
       id: 1,
@@ -132,7 +131,11 @@ export default function MapComponent() {
             <Marker
               draggable
               key={index}
-              onPress={() => navigation.navigate('utilitySingleHouse')}
+              onPress={(e) => {
+                navigation.navigate('utilitySingleHouse', {
+                  title: marker.title,
+                })
+              }}
               coordinate={marker.coordinate}
               title={marker.title}
             />

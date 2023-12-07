@@ -9,7 +9,8 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-export default function UtilitySingleHouse({ index, navigation }) {
+export default function UtilitySingleHouse({ index, navigation,route }) {
+  const {title} = route.params
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
   const hideModal = () => setVisible(false)
@@ -17,6 +18,12 @@ export default function UtilitySingleHouse({ index, navigation }) {
   const [waterDisconnected, setWaterDisconnected] = useState(false)
   const [sewerageDisconnected, setSewerageDisconnected] = useState(false)
   const [powerDisconnected, setPowerDisconnected] = useState(false)
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: title||"House"
+    })
+  }, [title])
 
   const property = [
     {
@@ -54,13 +61,6 @@ export default function UtilitySingleHouse({ index, navigation }) {
       isDisconnected: powerDisconnected,
     },
   ]
-
-  // change the title of the page
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: `House 136`,
-    })
-  }, [])
 
   const statusButtons = (status) => {
     let buttons = []
@@ -113,22 +113,22 @@ export default function UtilitySingleHouse({ index, navigation }) {
 
   const { coverImg, name, rent, address, status } = property[0]
   return (
-    <SafeAreaView>
+    // <SafeAreaView>
       <ScrollView>
         <Card mode={'elevated'} style={styles.container}>
-          <View style={[styles.flexRowWrap, styles.coverContainer]}>
+          {/* <View style={[styles.flexRowWrap, styles.coverContainer]}> */}
             <Card.Cover
+              source={{ uri: 'https://apicms.thestar.com.my/uploads/images/2023/06/23/2141370.jpg' }}
+              // style={styles.coverImages}
+            />
+            {/* <Card.Cover
               source={{ uri: 'https://picsum.photos/700' }}
               style={styles.coverImages}
-            />
-            <Card.Cover
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={styles.coverImages}
-            />
-          </View>
+            /> */}
+          {/* </View> */}
           <Card.Content>
             <Text variant="titleLarge" style={styles.p5}>
-              {name}
+              {title || name}
             </Text>
             <Text variant="bodyLarge" style={styles.p5}>
               <Text style={{ color: '#0647B3' }}>MYR {rent}</Text> / month
@@ -202,7 +202,7 @@ export default function UtilitySingleHouse({ index, navigation }) {
           </Card.Content>
         </Card>
       </ScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   )
 }
 const styles = StyleSheet.create({
