@@ -22,7 +22,9 @@ export default function UtilitySingleProperty({ i }) {
         backgroundColor: 'white',
       }}
       onPress={() => {
-        navigation.navigate('utilitySingleHouse')
+        navigation.navigate('utilitySingleHouse', {
+          title: 'House 136',
+        })
       }}
     >
       <Card.Cover
