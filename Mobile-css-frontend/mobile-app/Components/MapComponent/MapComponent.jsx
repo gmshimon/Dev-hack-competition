@@ -132,7 +132,9 @@ export default function MapComponent () {
               draggable
               key={index}
               onPress={e=>{
-                navigation.navigate("singleHouse")
+                navigation.navigate("singleHouse",{
+                  title:marker.title,
+                })
               }}
               coordinate={marker.coordinate}
               title={marker.title}
