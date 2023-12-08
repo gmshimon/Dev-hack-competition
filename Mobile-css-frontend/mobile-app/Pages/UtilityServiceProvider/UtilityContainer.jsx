@@ -1,5 +1,6 @@
-import { View, Pressable, Text } from 'react-native'
+import { View, Pressable, Text, TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
+import { IconButton, MD3Colors } from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -15,7 +16,23 @@ const PropertiesName = 'Bookmarks'
 const settingsName = 'Settings'
 const Tab = createBottomTabNavigator()
 
-export default function UtilityContainer() {
+export default function UtilityContainer({navigation}) {
+  const renderHeaderRight = () => (
+    <TouchableOpacity
+      onPress={() => {
+        
+        // Handle the press event
+        // This can be any action you want to perform when the right button is pressed
+      }}
+    >
+      <IconButton
+        icon="account-arrow-left"
+        size={20}
+        onPress={()=>navigation.navigate("Signup")}
+      />
+    </TouchableOpacity>
+  );
+
   const [propertyTitle, setPropertyTitle] = useState(true)
   useEffect(() => {
     setPropertyTitle(true)
@@ -51,11 +68,7 @@ export default function UtilityContainer() {
         name={DashboardName}
         component={MapDashboard}
         options={({ navigation }) => ({
-          headerLeft: () => (
-            <Pressable onPress={() => alert('Menu button pressed')}>
-              <Text style={{ color: '#fff', fontSize: 16 }}>Menu</Text>
-            </Pressable>
-          ),
+          headerRight: renderHeaderRight,
         })}
       />
       <Tab.Screen
@@ -65,7 +78,11 @@ export default function UtilityContainer() {
           headerShown: false,
         }}
       />
-      <Tab.Screen name={settingsName} component={Settings} />
+      <Tab.Screen name={settingsName} component={Settings} 
+        options={{
+          headerRight: renderHeaderRight,
+        }}
+      />
     </Tab.Navigator>
   )
 }
