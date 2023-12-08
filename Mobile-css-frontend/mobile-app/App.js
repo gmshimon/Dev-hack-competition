@@ -21,6 +21,11 @@ export default function App() {
     <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator>
+        <Stack.Screen
+            name="StartPage"
+            options={{ headerShown: false }}
+            component={StartPage}
+          />
           <Stack.Screen
             name='Login'
             options={{ headerShown: false }}
@@ -52,11 +57,6 @@ export default function App() {
             options={{
               headerTitleAlign: 'center',
             }}
-          />
-          <Stack.Screen
-            name="StartPage"
-            options={{ headerShown: false }}
-            component={StartPage}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -8,19 +8,17 @@ export default function StartPage() {
       <View style={styles.logo}>
         <Image
           style={styles.house}
-          source={{
-            uri: "https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/sqjix0bbx5-54719%3A24918?alt=media&token=7ee6d3e0-f472-435d-a37c-c8996f4c0087",
-          }}
+          source={require('../../assets/lock-icon.png')}
         />
-        <Text style={styles.logoText}>Lorem Ipsu</Text>
+        <Text style={styles.logoText}>Bills Go</Text>
       </View>
       <Text style={styles.welcomeText}>
-        Welcome to your Community Application
+        All in One Utility Bill Payment and Collection App
       </Text>
       <TouchableOpacity style={styles.button}>
         <Text
           style={styles.buttonText}
-          onPress={() => navigation.navigate("Dashboard")}
+          onPress={() => navigation.navigate("Login")}
         >
           Get Started
         </Text>
@@ -50,12 +48,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   house: {
-    width: 64,
-    height: 64,
+    width: 85,
+            height: 116,
     marginBottom: 4,
   },
   logoText: {
-    color: "rgba(52, 168, 83, 1)",
+    color: "#013668",
     fontSize: 25,
     // fontFamily: "Roboto, sans-serif",
     fontWeight: "400",
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     color: "rgba(0, 0, 0, 1)",
-    fontSize: 18,
+    fontSize: 17,
     // fontFamily: "Roboto, sans-serif",
     fontWeight: "500",
     textAlign: "center",
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "rgba(52, 168, 83, 1)",
+    backgroundColor: "#4285f4",
     paddingVertical: 10,
     width: 250,
     borderRadius: 5,
