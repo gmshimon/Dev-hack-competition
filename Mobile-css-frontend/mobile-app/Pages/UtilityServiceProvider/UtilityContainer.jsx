@@ -28,7 +28,7 @@ export default function UtilityContainer({navigation}) {
       <IconButton
         icon="account-arrow-left"
         size={20}
-        onPress={()=>navigation.navigate("Signup")}
+        onPress={()=>navigation.navigate("Login")}
       />
     </TouchableOpacity>
   );

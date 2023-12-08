@@ -22,6 +22,11 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            name='Login'
+            options={{ headerShown: false }}
+            component={LoginPage}
+          />
+          <Stack.Screen
             name="Dashboard"
             component={MainContainer}
             options={{ headerShown: false }}
@@ -30,16 +35,6 @@ export default function App() {
             name="utility-provider"
             component={UtilityContainer}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            options={{
-              headerTitleAlign: 'center',
-              headerStyle: {
-                height: 20, // Adjust the height as needed
-              },
-            }}
-            component={LoginPage}
           />
           {/* <Stack.Screen
             name='Sign up'
@@ -58,11 +53,6 @@ export default function App() {
               headerTitleAlign: 'center',
             }}
           />
-          {/* <Stack.Screen
-            name='Login'
-            options={{ headerShown: false }}
-            component={LoginPage}
-          /> */}
           <Stack.Screen
             name="StartPage"
             options={{ headerShown: false }}
