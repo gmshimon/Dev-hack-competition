@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Image,
@@ -7,42 +7,44 @@ import {
   TouchableOpacity,
   ScrollView,
   Platform,
-  StatusBar
-} from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextInput, Button, Icon, MD3Colors } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
+  StatusBar,
+} from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { TextInput, Button, Icon, MD3Colors } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
 export default function LoginPage() {
-  const navigation = useNavigation();
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const navigation = useNavigation()
+  const [email, setEmail] = useState('')
+  const [pass, setPass] = useState('')
 
   const handleSignIn = () => {
-    console.log("email: ", email);
-    console.log("Password: ", pass);
+    console.log('email: ', email)
+    console.log('Password: ', pass)
 
-    if(email==="simon@gmail.com" && pass==="simon"){
-      navigation.navigate("utility-provider");
+    if (email === 'simon@gmail.com' && pass === 'simon') {
+      navigation.navigate('utility-provider')
+    } else {
+      navigation.navigate('Dashboard')
     }
-    else{
-      navigation.navigate("Dashboard");
-
-    }
-
-  };
+  }
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" ,paddingTop:Platform.OS=="android"?50:0}}>
-      <StatusBar/>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: 'white',
+        paddingTop: Platform.OS == 'android' ? 50 : 0,
+      }}
+    >
       <View>
         <Image
           style={{
-            alignSelf: "center",
+            alignSelf: 'center',
             marginBottom: 10,
             width: 80,
             height: 80,
           }}
-          source={require("../../assets/lock-icon.png")}
+          source={require('../../assets/lock-icon.png')}
         />
         <Text style={styles.SignIn}>Sign In</Text>
       </View>
@@ -68,8 +70,8 @@ export default function LoginPage() {
           onPress={() => handleSignIn()}
           style={{
             width: 310,
-            alignItems: "center",
-            backgroundColor: "#4285F4",
+            alignItems: 'center',
+            backgroundColor: '#4285F4',
           }}
           labelStyle={{ fontSize: 18 }}
         >
@@ -83,7 +85,7 @@ export default function LoginPage() {
         <Text style={styles.signUpText}>Don't have an account?Sign up</Text>
       </View>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -93,30 +95,30 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   textContainer: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   SignIn: {
-    color: "rgba(0,0,0,1)",
+    color: 'rgba(0,0,0,1)',
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     // lineHeight: "140%",
     // fontFamily: "Roboto, sans-serif",
-    fontWeight: "600",
+    fontWeight: '600',
     marginBottom: 40,
   },
   lastContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 20,
     marginHorizontal: 20,
   },
   forgotPasswordText: {
-    color: "blue",
-    textDecorationLine: "underline",
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   signUpText: {
-    color: "blue",
-    textDecorationLine: "underline",
+    color: 'blue',
+    textDecorationLine: 'underline',
     marginLeft: 25,
   },
-});
+})

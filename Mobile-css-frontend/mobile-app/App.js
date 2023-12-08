@@ -9,7 +9,6 @@ import MainContainer from './Pages/Dashboard/MainContainer'
 import AddProperty from './Pages/AddProperty/AddProperty'
 import UtilityContainer from './Pages/UtilityServiceProvider/UtilityContainer'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { StripeProvider } from '@stripe/stripe-react-native'
 
 const Stack = createNativeStackNavigator()
 
@@ -19,61 +18,60 @@ export default function App() {
     //   <GooglePayBottomSheet />
     // </GestureHandlerRootView>
 
-    <StripeProvider publishableKey="pk_test_iO0OmHJjHiksR0HjyoUOSMNS0017Q3B9xA">
-      <PaperProvider>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="utility-provider"
-              component={UtilityContainer}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Dashboard"
-              component={MainContainer}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Login"
-              options={{
-                headerTitleAlign: 'center',
-                headerStyle: {
-                  height: 20, // Adjust the height as needed
-                },
-              }}
-              component={LoginPage}
-            />
-            <Stack.Screen
-            name='Signup'
+    <PaperProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Dashboard"
+            component={MainContainer}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="utility-provider"
+            component={UtilityContainer}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            options={{
+              headerTitleAlign: 'center',
+              headerStyle: {
+                height: 20, // Adjust the height as needed
+              },
+            }}
+            component={LoginPage}
+          />
+          {/* <Stack.Screen
+            name='Sign up'
             options={{ headerShown: false }}
             component={SignUp}
-          />
-            {/* <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="utility-provider"
             component={UtilityContainer}
             options={{headerShown: false}}
           /> */}
-            <Stack.Screen
-              name="addProperty"
-              component={AddProperty}
-              options={{
-                headerTitleAlign: 'center',
-              }}
-            />
-            {/* <Stack.Screen
+          <Stack.Screen
+            name="addProperty"
+            component={AddProperty}
+            options={{
+              headerTitleAlign: 'center',
+            }}
+          />
+          {/* <Stack.Screen
             name='Login'
             options={{ headerShown: false }}
             component={LoginPage}
           /> */}
-            <Stack.Screen
-              name="StartPage"
-              options={{ headerShown: false }}
-              component={StartPage}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
-    </StripeProvider>
+          <Stack.Screen
+            name="StartPage"
+            options={{ headerShown: false }}
+            component={StartPage}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
+
     //
   )
 }

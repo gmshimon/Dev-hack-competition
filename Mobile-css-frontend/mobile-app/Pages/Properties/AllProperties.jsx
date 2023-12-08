@@ -1,52 +1,57 @@
-import React, { useState } from "react";
-import { Searchbar, FAB } from "react-native-paper";
-import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import SingleProperty from "../../Components/PropertiesComponent/SingleProperty";
+import React, { useState } from 'react'
+import { Searchbar, Button } from 'react-native-paper'
+import { StyleSheet, View, ScrollView, Dimensions } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import SingleProperty from '../../Components/PropertiesComponent/SingleProperty'
 
 export default function AllProperties() {
-  const navigation = useNavigation();
-  const [searchQuery, setSearchQuery] = useState("");
-  const onChangeSearch = (query) => setSearchQuery(query);
+  const navigation = useNavigation()
+  const [searchQuery, setSearchQuery] = useState('')
+  const onChangeSearch = (query) => setSearchQuery(query)
   const onFABPress = () => {
     // Handle FAB press, e.g., navigate to another screen or perform an action
-    console.log("FAB Pressed!");
-  };
+    console.log('FAB Pressed!')
+  }
   const subjects = [
-    { id: 1, name: "Card 1" },
-    { id: 2, name: "Card 2" },
-    { id: 3, name: "Card 3" },
-    { id: 4, name: "Card 4" },
-  ];
-  const screenWidth = Dimensions.get("window").width;
-  const cardWidth = (screenWidth - 20) / 2; 
+    { id: 1, name: 'Card 1' },
+    { id: 2, name: 'Card 2' },
+    { id: 3, name: 'Card 3' },
+    { id: 4, name: 'Card 4' },
+  ]
+
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
         <Searchbar
-        style={{backgroundColor: "white"}}
+          style={{ backgroundColor: 'white' }}
           placeholder="Search for a property"
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
       </View>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.contentContainer}> 
-          {subjects.map((subject, i) => (
-          <SingleProperty key={subject.id} i={i} cardWidth={cardWidth}/>
+      <ScrollView>
+        <View style={styles.propertyContainer}>
+          {subjects.map((subject) => (
+            <View style={styles.propertyCard}>
+              <SingleProperty key={subject.id} />
+            </View>
           ))}
         </View>
       </ScrollView>
-      <FAB
-        style={styles.fab}
-        small
+      <Button
+        style={styles.addPropertyButton}
         icon="plus"
+        mode="elevated"
+        buttonColor="#4285F4"
+        textColor="#fff"
         onPress={() => {
-          navigation.navigate("addProperty");
+          navigation.navigate('addProperty')
         }}
-      />
+      >
+        Add Property
+      </Button>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -55,22 +60,28 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     paddingHorizontal: 10,
-    paddingTop: 10,
+    paddingVertical: 16,
   },
-  scrollView: {
-    flex: 1,
-  },
-  contentContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    paddingHorizontal: 5,
-    paddingBottom: 40,
-  },
-  fab: {
-    position: "absolute",
-    margin: 16,
+  addPropertyButton: {
+    position: 'absolute',
+    marginHorizontal: 8,
+    marginVertical: 16,
     right: 0,
-    bottom: -10,
-    backgroundColor:'white'
+    bottom: -8,
+    width: 8 * 20,
   },
-});
+  flexRowWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  propertyContainer: {
+    marginHorizontal: 8,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  propertyCard: {
+    maxWidth: '48%',
+    marginBottom: 16,
+  },
+})

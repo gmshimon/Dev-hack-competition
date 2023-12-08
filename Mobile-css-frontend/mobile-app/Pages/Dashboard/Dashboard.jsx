@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Image,
@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StatusBar,
-} from "react-native";
+} from 'react-native'
 import {
   TextInput,
   Button,
@@ -16,28 +16,27 @@ import {
   Provider,
   ProgressBar,
   MD3Colors,
-} from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
-import CustomerRent from "../../Components/CustomerRent/CustomerRent";
-import CustomerExpenses from "../../Components/CustomerExpenses/CustomerExpenses";
+} from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
+import CustomerRent from '../../Components/CustomerRent/CustomerRent'
+import CustomerExpenses from '../../Components/CustomerExpenses/CustomerExpenses'
 export default function Dashboard() {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "grey" }}>
-      <StatusBar/>
+    <ScrollView style={{ flex: 1, backgroundColor: 'grey' }}>
       <CustomerRent />
       <CustomerExpenses />
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   box: {
     marginBottom: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginHorizontal: 8,
     borderRadius: 5,
     paddingVertical: 20,
   },
-});
+})
