@@ -304,5 +304,6 @@ const styles = StyleSheet.create({
   },
   bulkPaymentButton: {
     borderRadius: 5,
+    marginTop: 8,
   },
 })

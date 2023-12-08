@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Searchbar, FAB } from 'react-native-paper'
-import { StyleSheet, View, ScrollView } from 'react-native'
+import { Searchbar, Button } from 'react-native-paper'
+import { StyleSheet, View, ScrollView, Dimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import UtilitySingleProperty from '../../../Components/UtilityProviderComponents/PropertiesComponent/UtilitySingleProperty'
 
-export default function UtilityAllProperties() {
+export default function AllProperties() {
   const navigation = useNavigation()
   const [searchQuery, setSearchQuery] = useState('')
   const onChangeSearch = (query) => setSearchQuery(query)
@@ -18,6 +18,7 @@ export default function UtilityAllProperties() {
     { id: 3, name: 'Card 3' },
     { id: 4, name: 'Card 4' },
   ]
+
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
@@ -28,21 +29,27 @@ export default function UtilityAllProperties() {
           value={searchQuery}
         />
       </View>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.contentContainer}>
-          {subjects.map((subject, i) => (
-            <UtilitySingleProperty key={subject.id} i={i} />
+      <ScrollView>
+        <View style={styles.propertyContainer}>
+          {subjects.map((subject) => (
+            <View style={styles.propertyCard}>
+              <UtilitySingleProperty key={subject.id} />
+            </View>
           ))}
         </View>
       </ScrollView>
-      <FAB
-        style={styles.fab}
-        small
+      <Button
+        style={styles.addPropertyButton}
         icon="plus"
+        mode="elevated"
+        buttonColor="#4285F4"
+        textColor="#fff"
         onPress={() => {
           navigation.navigate('addProperty')
         }}
-      />
+      >
+        Add Property
+      </Button>
     </View>
   )
 }
@@ -53,22 +60,28 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     paddingHorizontal: 10,
-    paddingTop: 10,
+    paddingVertical: 16,
   },
-  scrollView: {
-    flex: 1,
+  addPropertyButton: {
+    position: 'absolute',
+    marginHorizontal: 8,
+    marginVertical: 16,
+    right: 0,
+    bottom: -8,
+    width: 8 * 20,
   },
-  contentContainer: {
+  flexRowWrap: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingHorizontal: 5,
-    paddingBottom: 40,
   },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: -10,
-    backgroundColor: 'white',
+  propertyContainer: {
+    marginHorizontal: 8,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  propertyCard: {
+    maxWidth: '48%',
+    marginBottom: 16,
   },
 })

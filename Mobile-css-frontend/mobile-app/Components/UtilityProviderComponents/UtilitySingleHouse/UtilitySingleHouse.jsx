@@ -125,8 +125,8 @@ export default function UtilitySingleHouse({ index, navigation, route }) {
           <Text variant="titleLarge" style={styles.p5}>
             {title || name}
           </Text>
-          <Text variant="bodyLarge" style={styles.p5}>
-            <Text style={{ color: '#0647B3' }}>MYR {rent}</Text> / month
+          <Text variant="bodyLarge" style={[styles.p5, { color: '#0647B3' }]}>
+            MYR {rent} overdue
           </Text>
           <Text variant="labelSmall" style={[styles.upperCaseText, styles.mb5]}>
             <Icon source="map-marker" />
@@ -155,10 +155,13 @@ export default function UtilitySingleHouse({ index, navigation, route }) {
                     </Text>
                   </View>
                   <View style={styles.billMiddleSection} flex={1}>
-                    <Text variant="bodyMedium" style={{ color: '#0647B3' }}>
+                    <Text variant="bodyMedium" style={{ color: '#EA4335' }}>
                       MYR {bill.amount}
                     </Text>
-                    <Text variant="bodySmall">Due in {bill.dueDate} days</Text>
+                    <Text variant="bodySmall">
+                      Overdue since {'\n'}
+                      {bill.dueDate} weeks
+                    </Text>
                   </View>
 
                   {!bill.isDisconnected ? (
