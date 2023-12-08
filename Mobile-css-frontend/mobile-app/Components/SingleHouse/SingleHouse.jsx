@@ -17,7 +17,7 @@ export default function SingleHouse({ index, navigation }) {
   const hideModal = () => setVisible(false)
 
   const [waterPaid, setWaterPaid] = useState(false)
-  const [gasPaid, setGasPaid] = useState(false)
+  const [seweragePaid, setSeweragePaid] = useState(false)
   const [powerPaid, setPowerPaid] = useState(false)
 
   const property = [
@@ -45,7 +45,7 @@ export default function SingleHouse({ index, navigation }) {
       amount: '299',
       dueDate: 3,
       img: 'https://cdn-icons-png.flaticon.com/512/5847/5847766.png',
-      isPaid: gasPaid,
+      isPaid: seweragePaid,
     },
     {
       id: 3,
@@ -69,16 +69,12 @@ export default function SingleHouse({ index, navigation }) {
     <SafeAreaView>
       <ScrollView>
         <Card mode={'elevated'} style={styles.container}>
-          <View style={[styles.flexRowWrap, styles.coverContainer]}>
-            <Card.Cover
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={styles.coverImages}
-            />
-            <Card.Cover
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={styles.coverImages}
-            />
-          </View>
+          <Card.Cover
+            source={{
+              uri: 'https://apicms.thestar.com.my/uploads/images/2023/06/23/2141370.jpg',
+            }}
+            style={styles.coverImages}
+          />
           <Card.Content>
             <Text variant="titleLarge" style={styles.p5}>
               {name}
@@ -145,7 +141,7 @@ export default function SingleHouse({ index, navigation }) {
                           onPress={() => {
                             showModal()
                             if (bill.id == 1) setWaterPaid(true)
-                            else if (bill.id == 2) setGasPaid(true)
+                            else if (bill.id == 2) setSeweragePaid(true)
                             else if (bill.id == 3) setPowerPaid(true)
                           }}
                         >
@@ -185,6 +181,20 @@ export default function SingleHouse({ index, navigation }) {
                 </Card>
               ))}
             </View>
+            <Button
+              style={styles.bulkPaymentButton}
+              mode="elevated"
+              buttonColor="#4285F4"
+              textColor="#fff"
+              onPress={() => {
+                showModal()
+                setWaterPaid(true)
+                setSeweragePaid(true)
+                setPowerPaid(true)
+              }}
+            >
+              Pay all
+            </Button>
           </Card.Content>
         </Card>
       </ScrollView>
@@ -291,5 +301,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 10,
+  },
+  bulkPaymentButton: {
+    borderRadius: 5,
   },
 })

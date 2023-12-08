@@ -9,8 +9,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-
-export default function UtilitySingleHouse({ index, navigation,route }) {
+export default function UtilitySingleHouse({ index, navigation, route }) {
   const title = route.params?.title
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
@@ -117,18 +116,11 @@ export default function UtilitySingleHouse({ index, navigation,route }) {
     // <SafeAreaView>
     <ScrollView>
       <Card mode={'elevated'} style={styles.container}>
-        {/* <View style={[styles.flexRowWrap, styles.coverContainer]}> */}
         <Card.Cover
           source={{
             uri: 'https://apicms.thestar.com.my/uploads/images/2023/06/23/2141370.jpg',
           }}
-          // style={styles.coverImages}
         />
-        {/* <Card.Cover
-              source={{ uri: 'https://picsum.photos/700' }}
-              style={styles.coverImages}
-            /> */}
-        {/* </View> */}
         <Card.Content>
           <Text variant="titleLarge" style={styles.p5}>
             {title || name}

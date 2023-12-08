@@ -9,9 +9,11 @@ import {
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { Icon } from 'react-native-paper'
+import StatusDueButtons from '../StatusDueButtons/StatusDueButtons'
 
 export default function SingleProperty() {
   const navigation = useNavigation()
+  const status = ['water', 'electricity', 'assessment', 'sewerage']
 
   return (
     <Card
@@ -37,12 +39,8 @@ export default function SingleProperty() {
         </Text>
 
         <View style={[styles.addressContainer, styles.pv5]}>
-          <Icon source="map-marker" size={24} />
-
-          <Text
-            variant="labelSmall"
-            style={[styles.upperCaseText, { marginRight: 24 }]}
-          >
+          <Text variant="labelSmall" style={[styles.upperCaseText]}>
+            <Icon source="map-marker" />
             jalan pendidikan 1, taman universiti, skudai, johor
           </Text>
         </View>
@@ -89,10 +87,5 @@ const styles = StyleSheet.create({
 
   pv5: {
     paddingVertical: 5,
-  },
-
-  addressContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 })
