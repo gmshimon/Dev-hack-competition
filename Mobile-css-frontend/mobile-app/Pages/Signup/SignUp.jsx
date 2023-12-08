@@ -23,8 +23,8 @@ export default function SignUp() {
           style={{
             alignSelf: "center",
             marginBottom: 10,
-            width: 80,
-            height: 80,
+            width: 85,
+            height: 116,
           }}
           source={require("../../assets/lock-icon.png")}
         />

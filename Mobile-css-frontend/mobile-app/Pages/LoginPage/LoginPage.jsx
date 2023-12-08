@@ -41,8 +41,8 @@ export default function LoginPage() {
           style={{
             alignSelf: 'center',
             marginBottom: 10,
-            width: 80,
-            height: 80,
+            width: 85,
+            height: 116,
           }}
           source={require('../../assets/lock-icon.png')}
         />
@@ -82,7 +82,7 @@ export default function LoginPage() {
         <TouchableOpacity>
           <Text style={styles.forgotPasswordText}>Forgot Password</Text>
         </TouchableOpacity>
-        <Text style={styles.signUpText}>Don't have an account?Sign up</Text>
+        <Text onPress={()=>navigation.navigate('Signup')} style={styles.signUpText}>Don't have an account?Sign up</Text>
       </View>
     </SafeAreaView>
   )

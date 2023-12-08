@@ -36,11 +36,11 @@ export default function App() {
             component={UtilityContainer}
             options={{ headerShown: false }}
           />
-          {/* <Stack.Screen
-            name='Sign up'
+          <Stack.Screen
+            name='Signup'
             options={{ headerShown: false }}
             component={SignUp}
-          /> */}
+          />
           {/* <Stack.Screen
             name="utility-provider"
             component={UtilityContainer}
