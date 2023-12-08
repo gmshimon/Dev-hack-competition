@@ -6,12 +6,12 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView
+  SafeAreaView,
 } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import PaidModal from '../PaidModal/PaidModal'
+import StatusDueButtons from '../StatusDueButtons/StatusDueButtons'
 
-export default function SingleHouse ({ index, navigation }) {
+export default function SingleHouse({ index, navigation }) {
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
   const hideModal = () => setVisible(false)
@@ -26,8 +26,8 @@ export default function SingleHouse ({ index, navigation }) {
       name: 'House 136',
       rent: 1600,
       address: 'jalan pendidikan 1, taman universiti, skudai, johor',
-      status: ['water', 'electricity', 'assessment', 'sewerage']
-    }
+      status: ['water', 'electricity', 'assessment', 'sewerage'],
+    },
   ]
 
   const bills = [
@@ -37,7 +37,7 @@ export default function SingleHouse ({ index, navigation }) {
       amount: '150',
       dueDate: 3,
       img: 'https://static.vecteezy.com/system/resources/previews/022/152/992/original/pure-water-icon-isolated-png.png',
-      isPaid: waterPaid
+      isPaid: waterPaid,
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ export default function SingleHouse ({ index, navigation }) {
       amount: '299',
       dueDate: 3,
       img: 'https://cdn-icons-png.flaticon.com/512/5847/5847766.png',
-      isPaid: gasPaid
+      isPaid: gasPaid,
     },
     {
       id: 3,
@@ -53,65 +53,16 @@ export default function SingleHouse ({ index, navigation }) {
       amount: '128',
       dueDate: 4,
       img: 'https://cdn-icons-png.flaticon.com/512/6778/6778937.png',
-      isPaid: powerPaid
-    }
+      isPaid: powerPaid,
+    },
   ]
 
   // change the title of the page
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: `House 136`
+      title: `House 136`,
     })
   }, [])
-
-  const statusButtons = status => {
-    let buttons = []
-    if (status.includes('water')) {
-      buttons.push(
-        <Button
-          mode='contained'
-          uppercase={true}
-          style={[styles.blueButton, styles.m5]}
-        >
-          water
-        </Button>
-      )
-    }
-    if (status.includes('electricity')) {
-      buttons.push(
-        <Button
-          mode='contained'
-          uppercase={true}
-          style={[styles.greenButton, styles.m5]}
-        >
-          electricity
-        </Button>
-      )
-    }
-    if (status.includes('sewerage')) {
-      buttons.push(
-        <Button
-          mode='contained'
-          uppercase={true}
-          style={[styles.redButton, styles.m5]}
-        >
-          sewerage
-        </Button>
-      )
-    }
-    if (status.includes('assessment')) {
-      buttons.push(
-        <Button
-          mode='contained'
-          uppercase={true}
-          style={[styles.yellowButton, styles.m5]}
-        >
-          assessment
-        </Button>
-      )
-    }
-    return buttons
-  }
 
   const { coverImg, name, rent, address, status } = property[0]
   return (
@@ -129,20 +80,22 @@ export default function SingleHouse ({ index, navigation }) {
             />
           </View>
           <Card.Content>
-            <Text variant='titleLarge' style={styles.p5}>
+            <Text variant="titleLarge" style={styles.p5}>
               {name}
             </Text>
-            <Text variant='bodyLarge' style={styles.p5}>
+            <Text variant="bodyLarge" style={styles.p5}>
               <Text style={{ color: '#0647B3' }}>MYR {rent}</Text> / month
             </Text>
             <Text
-              variant='labelSmall'
+              variant="labelSmall"
               style={[styles.upperCaseText, styles.mb5]}
             >
-              <Icon source='map-marker' />
+              <Icon source="map-marker" />
               {address}
             </Text>
-            <View style={styles.flexRowWrap}>{statusButtons(status)}</View>
+            <View style={styles.flexRowWrap}>
+              <StatusDueButtons status={status} />
+            </View>
 
             <View>
               {bills.map((bill, index) => (
@@ -151,33 +104,32 @@ export default function SingleHouse ({ index, navigation }) {
                     style={{
                       flexDirection: 'row',
                       justifyContent: 'space-between',
-                      alignItems: 'center'
+                      alignItems: 'center',
                     }}
                   >
-                    {/* <View style={styles.flexRowWrap}> */}
                     <View style={styles.billLeftSection}>
                       <Image
                         style={styles.billIcons}
                         source={{ uri: bill.img }}
                       />
-                      <Text variant='labelMedium' style={styles.billTitles}>
+                      <Text variant="labelMedium" style={styles.billTitles}>
                         {bill.title}
                       </Text>
                     </View>
                     <View style={styles.billMiddleSection} flex={1}>
-                      <Text variant='bodyMedium' style={{ color: '#0647B3' }}>
+                      <Text variant="bodyMedium" style={{ color: '#0647B3' }}>
                         MYR {bill.amount}
                       </Text>
-                      <Text variant='bodySmall'>
+                      <Text variant="bodySmall">
                         Due in {bill.dueDate} days
                       </Text>
                     </View>
-                    {/* </View> */}
+
                     <View>
                       {!bill.isPaid ? (
                         <Button
-                          icon='google'
-                          mode='elevated'
+                          icon="google"
+                          mode="elevated"
                           labelStyle={{ fontSize: 20, color: 'black' }}
                           style={{
                             marginRight: 5,
@@ -185,10 +137,10 @@ export default function SingleHouse ({ index, navigation }) {
                             shadowColor: 'black',
                             shadowOffset: {
                               width: 0,
-                              height: 2
+                              height: 2,
                             },
                             shadowOpacity: 0.3,
-                            elevation: 8
+                            elevation: 8,
                           }}
                           onPress={() => {
                             showModal()
@@ -204,7 +156,7 @@ export default function SingleHouse ({ index, navigation }) {
                           style={{
                             flexDirection: 'row',
                             alignContent: 'center',
-                            paddingRight: 20
+                            paddingRight: 20,
                           }}
                         >
                           <View
@@ -213,15 +165,15 @@ export default function SingleHouse ({ index, navigation }) {
                               width: 30,
                               height: 30,
                               borderRadius: 15,
-                              marginBottom: 20
+                              marginBottom: 20,
                             }}
                           >
-                            <Icon source='check' color='white' size={30} />
+                            <Icon source="check" color="white" size={30} />
                           </View>
                           <Text
                             style={{
                               fontSize: 20,
-                              marginLeft: 5
+                              marginLeft: 5,
                             }}
                           >
                             Paid
@@ -242,32 +194,32 @@ export default function SingleHouse ({ index, navigation }) {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 
   blueButton: {
-    backgroundColor: '#4285F4'
+    backgroundColor: '#4285F4',
   },
 
   redButton: {
-    backgroundColor: '#EA4335'
+    backgroundColor: '#EA4335',
   },
 
   greenButton: {
-    backgroundColor: '#34A853'
+    backgroundColor: '#34A853',
   },
 
   yellowButton: {
-    backgroundColor: '#FBBC05'
+    backgroundColor: '#FBBC05',
   },
 
   upperCaseText: {
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
 
   flexRowWrap: {
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
 
   coverImages: {
@@ -275,33 +227,33 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 6,
     minWidth: '46%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 
   coverContainer: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
 
   m5: {
-    margin: 5
+    margin: 5,
   },
 
   mb5: {
-    marginBottom: 5
+    marginBottom: 5,
   },
 
   p5: {
-    padding: 5
+    padding: 5,
   },
 
   billIcons: {
     width: 64,
-    height: 64
+    height: 64,
   },
 
   billCards: {
     marginVertical: 8,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
   },
 
   billTitles: { textTransform: 'capitalize' },
@@ -311,7 +263,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 90,
     marginVertical: 12,
-    borderRightWidth: 1.5
+    borderRightWidth: 1.5,
   },
 
   billMiddleSection: {
@@ -320,24 +272,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 16,
     paddingBottom: 8,
-    rowGap: 8
+    rowGap: 8,
   },
 
   imageContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     justifyContent: 'space-between',
-    marginTop: 5
+    marginTop: 5,
   },
   images: {
     width: 200,
     height: 200,
     resizeMode: 'contain',
-    borderRadius: 5
+    borderRadius: 5,
   },
   addressContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 })
