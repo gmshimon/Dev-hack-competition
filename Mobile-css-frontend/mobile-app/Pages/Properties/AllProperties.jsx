@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Searchbar, FAB } from "react-native-paper";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SingleProperty from "../../Components/PropertiesComponent/SingleProperty";
 
@@ -18,6 +18,8 @@ export default function AllProperties() {
     { id: 3, name: "Card 3" },
     { id: 4, name: "Card 4" },
   ];
+  const screenWidth = Dimensions.get("window").width;
+  const cardWidth = (screenWidth - 20) / 2; 
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
@@ -31,7 +33,7 @@ export default function AllProperties() {
       <ScrollView style={styles.scrollView}>
         <View style={styles.contentContainer}> 
           {subjects.map((subject, i) => (
-            <SingleProperty key={subject.id} i={i} />
+          <SingleProperty key={subject.id} i={i} cardWidth={cardWidth}/>
           ))}
         </View>
       </ScrollView>

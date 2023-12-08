@@ -24,6 +24,11 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
+              name="Dashboard"
+              component={MainContainer}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="utility-provider"
               component={UtilityContainer}
               options={{ headerShown: false }}
@@ -43,11 +48,6 @@ export default function App() {
             options={{ headerShown: false }}
             component={SignUp}
           /> */}
-            <Stack.Screen
-              name="Dashboard"
-              component={MainContainer}
-              options={{ headerShown: false }}
-            />
             {/* <Stack.Screen
             name="utility-provider"
             component={UtilityContainer}
