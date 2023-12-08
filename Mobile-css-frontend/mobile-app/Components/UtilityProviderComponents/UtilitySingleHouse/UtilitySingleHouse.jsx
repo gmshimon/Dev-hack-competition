@@ -10,7 +10,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function UtilitySingleHouse({ index, navigation,route }) {
-  const {title} = route.params
+  const title = route.params?.title
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
   const hideModal = () => setVisible(false)
