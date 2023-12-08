@@ -31,7 +31,7 @@ export default function UtilityCustomerRent() {
               marginBottom: 5,
             }}
           >
-            RENT RECEIVED
+            CLEARED TAXES
           </Text>
           <Text
             style={{
@@ -44,9 +44,9 @@ export default function UtilityCustomerRent() {
           >
             21000 RM
           </Text>
-          <Text style={{ color: 'white', textAlign: 'right', fontSize: 15 }}>
+          {/* <Text style={{ color: 'white', textAlign: 'right', fontSize: 15 }}>
             LAST 20 DAYS
-          </Text>
+          </Text> */}
         </View>
         <View style={styles.secondContainer}>
           <Text
@@ -57,7 +57,7 @@ export default function UtilityCustomerRent() {
               marginBottom: 5,
             }}
           >
-            UNPAID{'\n'} RENT
+            UPCOMING{'\n'} BILLS
           </Text>
           <Text
             style={{
@@ -84,7 +84,7 @@ export default function UtilityCustomerRent() {
               marginBottom: 5,
             }}
           >
-            UTILITY{'\n'} BILLS DUE
+            UTILITY{'\n'} BILLS OVERDUE
           </Text>
 
           <Text

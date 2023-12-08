@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   StyleSheet,
   Image,
@@ -6,7 +6,7 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-} from "react-native";
+} from 'react-native'
 import {
   TextInput,
   Button,
@@ -15,18 +15,18 @@ import {
   Provider,
   ProgressBar,
   MD3Colors,
-} from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
+} from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 export default function CustomerRent() {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
   return (
     <View style={styles.box}>
       <View style={styles.cardContainer}>
         <View style={styles.firstContainer}>
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
+              color: 'white',
+              textAlign: 'right',
               fontSize: 15,
               marginBottom: 5,
             }}
@@ -35,35 +35,35 @@ export default function CustomerRent() {
           </Text>
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
-              fontWeight: "bold",
+              color: 'white',
+              textAlign: 'right',
+              fontWeight: 'bold',
               fontSize: 18,
               marginBottom: 5,
             }}
           >
             21000 RM
           </Text>
-          <Text style={{ color: "white", textAlign: "right", fontSize: 15 }}>
+          <Text style={{ color: 'white', textAlign: 'right', fontSize: 15 }}>
             LAST 20 DAYS
           </Text>
         </View>
         <View style={styles.secondContainer}>
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
+              color: 'white',
+              textAlign: 'right',
               fontSize: 15,
               marginBottom: 5,
             }}
           >
-            UNPAID{"\n"} RENT
+            UNPAID{'\n'} RENT
           </Text>
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
-              fontWeight: "bold",
+              color: 'white',
+              textAlign: 'right',
+              fontWeight: 'bold',
               fontSize: 18,
               marginBottom: 5,
               fontWeight: 900,
@@ -71,27 +71,27 @@ export default function CustomerRent() {
           >
             13850 RM
           </Text>
-          <Text style={{ color: "white", textAlign: "right", fontSize: 15 }}>
+          <Text style={{ color: 'white', textAlign: 'right', fontSize: 15 }}>
             5 UNPAID
           </Text>
         </View>
         <View style={styles.thirdContainer}>
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
+              color: 'white',
+              textAlign: 'right',
               fontSize: 15,
               marginBottom: 5,
             }}
           >
-            UTILITY{"\n"} BILLS DUE
+            UTILITY{'\n'} BILLS DUE
           </Text>
 
           <Text
             style={{
-              color: "white",
-              textAlign: "right",
-              fontWeight: "bold",
+              color: 'white',
+              textAlign: 'right',
+              fontWeight: 'bold',
               fontSize: 18,
               marginBottom: 5,
               fontWeight: 900,
@@ -99,7 +99,7 @@ export default function CustomerRent() {
           >
             3200 RM
           </Text>
-          <Text style={{ color: "white", textAlign: "right", fontSize: 15 }}>
+          <Text style={{ color: 'white', textAlign: 'right', fontSize: 15 }}>
             8 UNPAID
           </Text>
         </View>
@@ -122,19 +122,19 @@ export default function CustomerRent() {
         <View>
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <View>
-              <Text style={{ color: "red", fontSize: 22, fontWeight: "bold" }}>
-                $15000
+              <Text style={{ color: 'red', fontSize: 22, fontWeight: 'bold' }}>
+                15000 RM
               </Text>
               <Text style={{ fontSize: 14 }}>Outstanding in April</Text>
             </View>
             <View>
-              <Text style={{ fontWeight: 700, fontSize: 15 }}>$25,000</Text>
+              <Text style={{ fontWeight: 700, fontSize: 15 }}>25,000 RM</Text>
               <Text style={{ fontSize: 14 }}>Total Due</Text>
             </View>
           </View>
@@ -144,23 +144,23 @@ export default function CustomerRent() {
               color="rgb(255,143,64)"
               style={{ height: 20, borderRadius: 10, marginBottom: 5 }}
             />
-            <Text style={{ fontSize: 14 }}>$10,000 Collected</Text>
+            <Text style={{ fontSize: 14 }}>10,000 RM Collected</Text>
           </View>
         </View>
         <View style={{ marginTop: 25 }}>
           <View
             style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <View>
-              <Text style={{ fontSize: 22, fontWeight: "bold" }}>$5000</Text>
+              <Text style={{ fontSize: 22, fontWeight: 'bold' }}>5000 RM</Text>
               <Text style={{ fontSize: 14 }}>Outstanding in May</Text>
             </View>
             <View>
-              <Text style={{ fontWeight: 700, fontSize: 15 }}>$25,000</Text>
+              <Text style={{ fontWeight: 700, fontSize: 15 }}>25,000 RM</Text>
               <Text style={{ fontSize: 14 }}>Total Due</Text>
             </View>
           </View>
@@ -170,27 +170,27 @@ export default function CustomerRent() {
               color="rgb(24,150,199)"
               style={{ height: 20, borderRadius: 10, marginBottom: 5 }}
             />
-            <Text style={{ fontSize: 14 }}>$20,000 Collected</Text>
+            <Text style={{ fontSize: 14 }}>20,000 RM Collected</Text>
           </View>
         </View>
       </View>
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   box: {
     marginBottom: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginHorizontal: 8,
     borderRadius: 5,
     paddingVertical: 20,
   },
   cardContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   firstContainer: {
-    backgroundColor: "green",
+    backgroundColor: 'green',
     width: 150,
     flex: 1,
     height: 110,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   secondContainer: {
-    backgroundColor: "orange",
+    backgroundColor: 'orange',
     width: 150,
     flex: 1,
     height: 110,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   thirdContainer: {
-    backgroundColor: "red",
+    backgroundColor: 'red',
     flex: 1,
     width: 150,
     height: 110,
@@ -215,4 +215,4 @@ const styles = StyleSheet.create({
     padding: 10,
     marginHorizontal: 10,
   },
-});
+})
