@@ -9,19 +9,20 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+
 export default function UtilitySingleHouse({ index, navigation,route }) {
   const title = route.params?.title
   const [visible, setVisible] = React.useState(false)
   const showModal = () => setVisible(true)
   const hideModal = () => setVisible(false)
-
+  console.log(title)
   const [waterDisconnected, setWaterDisconnected] = useState(false)
   const [sewerageDisconnected, setSewerageDisconnected] = useState(false)
   const [powerDisconnected, setPowerDisconnected] = useState(false)
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: title||"House"
+      title: title || 'House',
     })
   }, [title])
 
@@ -114,94 +115,91 @@ export default function UtilitySingleHouse({ index, navigation,route }) {
   const { coverImg, name, rent, address, status } = property[0]
   return (
     // <SafeAreaView>
-      <ScrollView>
-        <Card mode={'elevated'} style={styles.container}>
-          {/* <View style={[styles.flexRowWrap, styles.coverContainer]}> */}
-            <Card.Cover
-              source={{ uri: 'https://apicms.thestar.com.my/uploads/images/2023/06/23/2141370.jpg' }}
-              // style={styles.coverImages}
-            />
-            {/* <Card.Cover
+    <ScrollView>
+      <Card mode={'elevated'} style={styles.container}>
+        {/* <View style={[styles.flexRowWrap, styles.coverContainer]}> */}
+        <Card.Cover
+          source={{
+            uri: 'https://apicms.thestar.com.my/uploads/images/2023/06/23/2141370.jpg',
+          }}
+          // style={styles.coverImages}
+        />
+        {/* <Card.Cover
               source={{ uri: 'https://picsum.photos/700' }}
               style={styles.coverImages}
             /> */}
-          {/* </View> */}
-          <Card.Content>
-            <Text variant="titleLarge" style={styles.p5}>
-              {title || name}
-            </Text>
-            <Text variant="bodyLarge" style={styles.p5}>
-              <Text style={{ color: '#0647B3' }}>MYR {rent}</Text> / month
-            </Text>
-            <Text
-              variant="labelSmall"
-              style={[styles.upperCaseText, styles.mb5]}
-            >
-              <Icon source="map-marker" />
-              {address}
-            </Text>
-            <View style={styles.flexRowWrap}>{statusButtons(status)}</View>
+        {/* </View> */}
+        <Card.Content>
+          <Text variant="titleLarge" style={styles.p5}>
+            {title || name}
+          </Text>
+          <Text variant="bodyLarge" style={styles.p5}>
+            <Text style={{ color: '#0647B3' }}>MYR {rent}</Text> / month
+          </Text>
+          <Text variant="labelSmall" style={[styles.upperCaseText, styles.mb5]}>
+            <Icon source="map-marker" />
+            {address}
+          </Text>
+          <View style={styles.flexRowWrap}>{statusButtons(status)}</View>
 
-            <View>
-              {bills.map((bill, index) => (
-                <Card style={styles.billCards}>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}
-                  >
-                    {/* <View style={styles.flexRowWrap}> */}
-                    <View style={styles.billLeftSection}>
-                      <Image
-                        style={styles.billIcons}
-                        source={{ uri: bill.img }}
-                      />
-                      <Text variant="labelMedium" style={styles.billTitles}>
-                        {bill.title}
-                      </Text>
-                    </View>
-                    <View style={styles.billMiddleSection} flex={1}>
-                      <Text variant="bodyMedium" style={{ color: '#0647B3' }}>
-                        MYR {bill.amount}
-                      </Text>
-                      <Text variant="bodySmall">
-                        Due in {bill.dueDate} days
-                      </Text>
-                    </View>
-
-                    {!bill.isDisconnected ? (
-                      <View style={styles.disconnectButton}>
-                        <Button
-                          icon="close"
-                          buttonColor="#EA4335"
-                          textColor="#fff"
-                          mode="text"
-                          onPress={() => {
-                            showModal()
-                            if (bill.id == 1) setWaterDisconnected(true)
-                            else if (bill.id == 2) setSewerageDisconnected(true)
-                            else if (bill.id == 3) setPowerDisconnected(true)
-                          }}
-                        >
-                          Disconnect
-                        </Button>
-                      </View>
-                    ) : (
-                      <View style={styles.disconnected}>
-                        <Button mode="text" icon="close" textColor="#EA4335">
-                          Disconnected
-                        </Button>
-                      </View>
-                    )}
+          <View>
+            {bills.map((bill, index) => (
+              <Card style={styles.billCards}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  {/* <View style={styles.flexRowWrap}> */}
+                  <View style={styles.billLeftSection}>
+                    <Image
+                      style={styles.billIcons}
+                      source={{ uri: bill.img }}
+                    />
+                    <Text variant="labelMedium" style={styles.billTitles}>
+                      {bill.title}
+                    </Text>
                   </View>
-                </Card>
-              ))}
-            </View>
-          </Card.Content>
-        </Card>
-      </ScrollView>
+                  <View style={styles.billMiddleSection} flex={1}>
+                    <Text variant="bodyMedium" style={{ color: '#0647B3' }}>
+                      MYR {bill.amount}
+                    </Text>
+                    <Text variant="bodySmall">Due in {bill.dueDate} days</Text>
+                  </View>
+
+                  {!bill.isDisconnected ? (
+                    <View style={styles.disconnectButton}>
+                      <Button
+                        icon="close"
+                        buttonColor="#EA4335"
+                        textColor="#fff"
+                        mode="text"
+                        onPress={() => {
+                          showModal()
+                          if (bill.id == 1) setWaterDisconnected(true)
+                          else if (bill.id == 2) setSewerageDisconnected(true)
+                          else if (bill.id == 3) setPowerDisconnected(true)
+                        }}
+                      >
+                        Disconnect
+                      </Button>
+                    </View>
+                  ) : (
+                    <View style={styles.disconnected}>
+                      <Button mode="text" icon="close" textColor="#EA4335">
+                        Disconnected
+                      </Button>
+                    </View>
+                  )}
+                </View>
+              </Card>
+            ))}
+          </View>
+        </Card.Content>
+      </Card>
+    </ScrollView>
     // </SafeAreaView>
   )
 }

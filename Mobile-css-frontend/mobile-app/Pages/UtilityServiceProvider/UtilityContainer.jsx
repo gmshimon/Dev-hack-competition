@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import Map from './MapDashboard/MapDashboard'
+import MapDashboard from './MapDashboard/MapDashboard'
 import UtilityPropertiesScreen from './UtilityProperties/UtilityPropertiesScreen'
 import Settings from '../Dashboard/Settings'
 import { useEffect, useState } from 'react'
@@ -49,7 +49,7 @@ export default function UtilityContainer() {
     >
       <Tab.Screen
         name={DashboardName}
-        component={Map}
+        component={MapDashboard}
         options={({ navigation }) => ({
           headerLeft: () => (
             <Pressable onPress={() => alert('Menu button pressed')}>
