@@ -23,7 +23,6 @@ export default function CustomerExpenses() {
 
   return (
     <View style={styles.box}>
-      <Text>Hello</Text>
       <ExpenseChart />
     </View>
   );
@@ -32,8 +31,9 @@ const styles = StyleSheet.create({
   box: {
     marginBottom: 20,
     backgroundColor: "white",
-    marginHorizontal: 8,
+    // marginHorizontal: 8,
     borderRadius: 5,
     paddingVertical: 20,
+    paddingRight:15
   },
 });
