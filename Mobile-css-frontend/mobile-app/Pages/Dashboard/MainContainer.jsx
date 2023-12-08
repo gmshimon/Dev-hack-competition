@@ -1,7 +1,7 @@
-import { View, Pressable, Text } from 'react-native'
+import { View, Pressable, Text, TouchableOpacity } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-
+import { IconButton, MD3Colors } from 'react-native-paper';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import Dashboard from './Dashboard'
@@ -15,7 +15,24 @@ const PropertiesName = 'Properties'
 const settingsName = 'Settings'
 const Tab = createBottomTabNavigator()
 
-export default function MainContainer() {
+export default function MainContainer({navigation}) {
+
+  const renderHeaderRight = () => (
+    <TouchableOpacity
+      onPress={() => {
+        
+        // Handle the press event
+        // This can be any action you want to perform when the right button is pressed
+      }}
+    >
+      <IconButton
+        icon="account-arrow-left"
+        size={20}
+        onPress={()=>navigation.navigate("Login")}
+      />
+    </TouchableOpacity>
+  );
+
   const [propertyTitle, setPropertyTitle] = useState(true)
   useEffect(() => {
     setPropertyTitle(true)
@@ -50,13 +67,9 @@ export default function MainContainer() {
       <Tab.Screen
         name={DashboardName}
         component={Dashboard}
-        options={({ navigation }) => ({
-          headerLeft: () => (
-            <Pressable onPress={() => alert('Menu button pressed')}>
-              <Text style={{ color: '#fff', fontSize: 16 }}>Menu</Text>
-            </Pressable>
-          ),
-        })}
+        options={{
+          headerRight: renderHeaderRight,
+        }}
       />
       <Tab.Screen
         name={PropertiesName}
@@ -65,7 +78,9 @@ export default function MainContainer() {
           headerShown: false,
         }}
       />
-      <Tab.Screen name={settingsName} component={Settings} />
+      <Tab.Screen name={settingsName} component={Settings} options={{
+        headerRight: renderHeaderRight,
+      }} />
     </Tab.Navigator>
   )
 }
